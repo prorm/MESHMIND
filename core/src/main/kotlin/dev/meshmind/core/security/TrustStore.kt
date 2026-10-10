@@ -1,5 +1,6 @@
 package dev.meshmind.core.security
 
+import dev.meshmind.core.model.Answer
 import dev.meshmind.core.model.NodeId
 import dev.meshmind.core.model.Packet
 import dev.meshmind.core.model.PacketType
@@ -13,6 +14,17 @@ enum class TrustLevel {
     /** No signature at all (only accepted when the router is configured to allow it). */
     UNSIGNED,
     /** Bad signature, expired or foreign certificate, or a key that contradicts what we know about that node. */
+    INVALID,
+}
+
+/** Who vouches for an answer. */
+enum class AnswerTrust {
+    /** Signed by a MeshMind authority (made by the backend). */
+    AUTHORITY,
+    /** Signed by a gateway phone whose identity is authority-verified. */
+    VERIFIED_GATEWAY,
+    /** Signed by a gateway phone with a self-signed identity: untampered, but who ran it is unverified. */
+    GATEWAY,
     INVALID,
 }
 
@@ -134,6 +146,16 @@ class TrustStore(
     fun verifyAuthority(data: ByteArray, signature: ByteArray, keyId: String): Boolean {
         val k = synchronized(this) { anchors[keyId] } ?: return false
         return Ec.verify(k, data, signature)
+    }
+
+    /** Checks an answer's signature: the authority's, or the gateway node's (via the certificate it carries). */
+    fun verifyAnswer(a: Answer, now: Long): AnswerTrust {
+        val node = a.nodeSigner ?: return if (verifyAuthority(a.signedBytes(), a.signature, a.keyId)) AnswerTrust.AUTHORITY else AnswerTrust.INVALID
+        val cert = a.signerCert?.let { runCatching { Certificate.decode(it) }.getOrNull() } ?: return AnswerTrust.INVALID
+        if (cert.nodeId != node) return AnswerTrust.INVALID
+        val r = evaluate(cert, now)
+        if (!r.accepted || !verifyNode(a.signedBytes(), a.signature, cert.publicKey)) return AnswerTrust.INVALID
+        return if (r.level == TrustLevel.VERIFIED) AnswerTrust.VERIFIED_GATEWAY else AnswerTrust.GATEWAY
     }
 
     /** Content signed directly by a node (e.g. an organizer's notice); [publicKey] comes from its certificate. */

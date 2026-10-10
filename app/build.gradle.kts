@@ -1,3 +1,15 @@
+import java.util.Properties
+
+/** Gemini key for gateways without a MeshMind server: from local.properties (gemini.apiKey) or backend/.env. Never committed. */
+fun geminiKey(): String {
+    val local = Properties().apply { rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) } }
+    local.getProperty("gemini.apiKey")?.takeIf { it.isNotBlank() }?.let { return it }
+    val env = rootProject.file("backend/.env")
+    if (!env.exists()) return ""
+    return env.readLines().map { it.trim() }.firstOrNull { it.startsWith("GEMINI_API_KEY=") }
+        ?.substringAfter("=")?.trim()?.trim('"')?.takeUnless { it.startsWith("your-") } ?: ""
+}
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -15,6 +27,8 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "0.1.0"
+        buildConfigField("String", "GEMINI_API_KEY", "\"${geminiKey()}\"")
+        buildConfigField("String", "GEMINI_MODEL", "\"gemini-3.5-flash-lite\"")
     }
 
     buildTypes {
@@ -29,7 +43,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
-    buildFeatures { compose = true }
+    buildFeatures { compose = true; buildConfig = true }
     packaging { resources.excludes += "/META-INF/{AL2.0,LGPL2.1}" }
 }
 

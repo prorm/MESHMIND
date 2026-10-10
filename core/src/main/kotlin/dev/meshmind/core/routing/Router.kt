@@ -351,7 +351,8 @@ class Router(
                 val resp = InetResponse(id, InetStatus.OK, 200, InetResponse.ANSWER_CONTENT_TYPE, WireCodec.encodeAnswer(a), false,
                     "already on this phone", selfId, listOf(selfId), now, servedFrom = InetResponse.SERVED_LOCAL_CACHE)
                 inetResults[id] = InetResult(id, req, now, Priority.NORMAL, reachedGatewayAt = now, response = resp,
-                    responseRoute = listOf(selfId), completedAt = now, answer = a, answerVerified = true, servedFrom = resp.servedFrom)
+                    responseRoute = listOf(selfId), completedAt = now, answer = a, answerVerified = true,
+                    answerTrust = trust.verifyAnswer(a, now), servedFrom = resp.servedFrom)
                 logger.log(LogCategory.GATEWAY, "${req.kind} answered from this phone's cache (no radio traffic)", id)
                 publish()
                 id
@@ -366,12 +367,29 @@ class Router(
         val cur = bulletins[b.boardId]
         if (cur != null && cur.bulletin.seq >= b.seq) return@atomically false
         val official = b.nodeSigner == null
-        bulletins[b.boardId] = BulletinView(b, official, if (official) Role.USER else identity.cert.role, selfId, now, 0)
+        val ownWeather = b.boardId == "$selfId/weather"
+        bulletins[b.boardId] = BulletinView(b, official, if (official || ownWeather) Role.USER else identity.cert.role, selfId, now, 0, ownWeather)
         val expires = (b.items.maxOfOrNull { it.expiresAt } ?: (now + config.bulletinLifetimeMs)).coerceAtMost(now + config.bulletinLifetimeMs)
         originateLocked(PacketType.BULLETIN, Addresses.BROADCAST, WireCodec.encodeBulletin(b),
             Classification(Priority.NORMAL, "BULLETIN", listOf("board ${b.boardId}")), (expires - now).coerceAtLeast(60_000))
         publish()
         true
+    }
+
+    /**
+     * Gateway without a MeshMind server: shares the weather it fetched itself (e.g. from Open-Meteo), signed with this
+     * node's key. Receivers accept weather-only boards from phones they know as gateways.
+     */
+    suspend fun broadcastGatewayWeather(items: List<BulletinItem>): Boolean {
+        if (!gatewayActive() || items.isEmpty() || items.any { it.kind != BulletinKind.WEATHER }) return false
+        val now = clock()
+        val boardId = "$selfId/weather"
+        val prev = mutex.withLock { bulletins[boardId]?.bulletin }
+        if (prev != null && prev.items.map { it.title to it.body } == items.map { it.title to it.body }) return false
+        val keyId = Bulletin.NODE_KEY_PREFIX + selfId
+        val title = "Weather via $selfId"
+        val seq = maxOf(now, (prev?.seq ?: 0) + 1)
+        return broadcastBulletin(Bulletin(boardId, title, seq, now, items, keyId, identity.sign(Bulletin.canonical(boardId, title, seq, now, items, keyId))))
     }
 
     /**
@@ -879,10 +897,10 @@ class Router(
         }
     }
 
-    /** Decodes an answer body and returns it only if a trusted authority signed it. */
+    /** Decodes an answer body and returns it only if its signature (authority or gateway) checks out. */
     private fun verifiedAnswer(resp: InetResponse): Answer? {
         val a = runCatching { WireCodec.decodeAnswer(resp.body) }.getOrNull() ?: return null
-        return a.takeIf { trust.verifyAuthority(it.signedBytes(), it.signature, it.keyId) }
+        return a.takeIf { trust.verifyAnswer(it, clock()) != dev.meshmind.core.security.AnswerTrust.INVALID }
     }
 
     /** A relay that already holds a verified, fresh answer to this question replies itself and stops the request here. */
@@ -917,21 +935,26 @@ class Router(
             logger.log(LogCategory.ERROR, "bad BULLETIN ${short(p.packetId)}"); return false
         }
         val signer = b.nodeSigner
+        var viaGateway = false
         val ok = if (signer == null) {
             trust.verifyAuthority(b.signedBytes(), b.signature, b.keyId)
         } else {
             val cert = p.cert?.let { runCatching { Certificate.decode(it) }.getOrNull() }
-            signer == p.sourceId && b.boardId == p.sourceId && verdict.level == TrustLevel.VERIFIED &&
-                verdict.role in setOf(Role.ORGANIZER, Role.RESPONDER) && cert != null &&
-                trust.verifyNode(b.signedBytes(), b.signature, cert.publicKey)
+            val signedByOrigin = signer == p.sourceId && (b.boardId == p.sourceId || b.boardId.startsWith(p.sourceId + "/")) &&
+                cert != null && trust.verifyNode(b.signedBytes(), b.signature, cert.publicKey)
+            val organizer = verdict.level == TrustLevel.VERIFIED && verdict.role in setOf(Role.ORGANIZER, Role.RESPONDER)
+            // Without a MeshMind server, a gateway may still share the weather it fetched itself (and nothing else).
+            viaGateway = !organizer && b.items.isNotEmpty() && b.items.all { it.kind == BulletinKind.WEATHER } &&
+                gateways.all(now).any { it.gatewayId == signer }
+            signedByOrigin && (organizer || viaGateway)
         }
         if (!ok) {
-            logger.log(LogCategory.SECURITY, "bulletin '${b.boardId}' from ${p.sourceId} ignored: not signed by the authority or a verified organizer", p.packetId)
+            logger.log(LogCategory.SECURITY, "bulletin '${b.boardId}' from ${p.sourceId} ignored: not signed by the authority, a verified organizer, or (weather only) a known gateway", p.packetId)
             return false
         }
         val cur = bulletins[b.boardId]
         if (cur == null || b.seq > cur.bulletin.seq) {
-            bulletins[b.boardId] = BulletinView(b, signer == null, if (signer == null) Role.USER else verdict.role, p.sourceId, now, p.hopCount)
+            bulletins[b.boardId] = BulletinView(b, signer == null, if (signer == null || viaGateway) Role.USER else verdict.role, p.sourceId, now, p.hopCount, viaGateway)
             logger.log(LogCategory.DELIVERY, "bulletin '${b.title}' (${b.items.size} items, seq ${b.seq}) from ${p.sourceId}", p.packetId)
         }
         return true
@@ -955,11 +978,12 @@ class Router(
             return
         }
         val answer = if (resp.contentType == InetResponse.ANSWER_CONTENT_TYPE) runCatching { WireCodec.decodeAnswer(resp.body) }.getOrNull() else null
-        val verified = answer != null && trust.verifyAuthority(answer.signedBytes(), answer.signature, answer.keyId)
+        val answerTrust = answer?.let { trust.verifyAnswer(it, now) }
+        val verified = answerTrust != null && answerTrust != dev.meshmind.core.security.AnswerTrust.INVALID
         if (answer != null && verified) answerCache.put(answer)
-        if (answer != null && !verified) logger.log(LogCategory.SECURITY, "answer for ${short(resp.requestId)} is not signed by a trusted authority: shown as unverified", resp.requestId)
+        if (answer != null && !verified) logger.log(LogCategory.SECURITY, "answer for ${short(resp.requestId)} has no valid signature: shown as unverified", resp.requestId)
         inetResults[resp.requestId] = r.copy(response = resp, responseRoute = responseRoute, completedAt = now,
-            answer = answer, answerVerified = verified, servedFrom = resp.servedFrom)
+            answer = answer, answerVerified = verified, answerTrust = answerTrust, servedFrom = resp.servedFrom)
         logger.log(
             LogCategory.DELIVERY,
             "INTERNET round trip ${short(resp.requestId)}: ${resp.status} http=${resp.httpCode} ${resp.body.size}B " +

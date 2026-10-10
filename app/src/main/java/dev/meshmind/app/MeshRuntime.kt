@@ -11,7 +11,10 @@ import dev.meshmind.app.net.InternetMonitor
 import dev.meshmind.app.net.NearbyTransport
 import dev.meshmind.app.net.TransportStatus
 import dev.meshmind.app.security.IdentityStore
+import dev.meshmind.core.gateway.AnswerService
 import dev.meshmind.core.gateway.BackendClient
+import dev.meshmind.core.gateway.DirectAnswerService
+import dev.meshmind.core.gateway.OpenMeteo
 import dev.meshmind.core.gateway.GatewayConfig
 import dev.meshmind.core.gateway.GatewayService
 import dev.meshmind.core.gateway.JvmHttpExecutor
@@ -56,6 +59,8 @@ data class GatewaySettings(
     val allowlist: Set<String> = GatewayConfig.DEFAULT_ALLOWLIST,
     /** Upstream requests per minute this phone's owner is willing to relay (the fair-share budget). */
     val perMinute: Int = 30,
+    /** Gemini key used when no MeshMind server is set: this phone answers questions itself. */
+    val geminiKey: String = "",
 )
 
 /** Progress of phone verification, for the Identity screen. */
@@ -217,6 +222,7 @@ class MeshRuntime(private val context: Context) {
         webhookUrl = prefs.getString("gw.webhook", "") ?: "",
         allowlist = prefs.getStringSet("gw.allowlist", null) ?: GatewayConfig.DEFAULT_ALLOWLIST,
         perMinute = prefs.getInt("gw.perMinute", 30),
+        geminiKey = prefs.getString("gw.geminiKey", null) ?: BuildConfig.GEMINI_API_KEY,
     )
 
     fun updateGateway(transform: (GatewaySettings) -> GatewaySettings) {
@@ -228,6 +234,7 @@ class MeshRuntime(private val context: Context) {
             .putString("gw.webhook", s.webhookUrl)
             .putStringSet("gw.allowlist", s.allowlist)
             .putInt("gw.perMinute", s.perMinute)
+            .putString("gw.geminiKey", s.geminiKey)
             .apply()
     }
 
@@ -271,14 +278,35 @@ class MeshRuntime(private val context: Context) {
         if (_router.value != null) { stopMesh(); startMesh() }
     }
 
-    /** Gateway: fetch the official live-info board from the backend and broadcast it if it changed. */
+    /**
+     * Gateway: refresh live info. With a MeshMind server, its signed official board; without one, the weather this
+     * phone fetches itself from Open-Meteo for its last known location.
+     */
     suspend fun refreshBulletin(): Boolean {
         val r = _router.value ?: return false
-        if (!isGatewayActive || _backendUrl.value.isBlank()) return false
-        return runCatching { r.broadcastBulletin(backend.bulletin(null, null)) }
-            .onFailure { r.logger.log(LogCategory.GATEWAY, "live info fetch failed: ${it.message}") }
-            .getOrDefault(false)
+        if (!isGatewayActive) return false
+        return runCatching {
+            if (_backendUrl.value.isNotBlank()) r.broadcastBulletin(backend.bulletin(null, null))
+            else {
+                val (lat, lon) = lastLocation() ?: (12.9788 to 77.5996)
+                r.broadcastGatewayWeather(OpenMeteo.weather(lat, lon, System.currentTimeMillis()))
+            }
+        }.onFailure { r.logger.log(LogCategory.GATEWAY, "live info fetch failed: ${it.message}") }.getOrDefault(false)
     }
+
+    /** Where answers come from on this gateway: the MeshMind server if set, else Gemini directly from this phone. */
+    val answerMode: String
+        get() = when {
+            _backendUrl.value.isNotBlank() -> "MeshMind server"
+            _gateway.value.geminiKey.isNotBlank() -> "this phone (Gemini)"
+            else -> "none"
+        }
+
+    @Suppress("MissingPermission")
+    private fun lastLocation(): Pair<Double, Double>? = runCatching {
+        val lm = context.getSystemService(android.location.LocationManager::class.java)
+        lm.getProviders(true).mapNotNull { lm.getLastKnownLocation(it) }.maxByOrNull { it.time }?.let { it.latitude to it.longitude }
+    }.getOrNull()
 
     // ---- mesh lifecycle (called by MeshService) -----------------------------------------------
 
@@ -288,9 +316,16 @@ class MeshRuntime(private val context: Context) {
         val id = _nodeId.value
         val logger = MeshLogger(System::currentTimeMillis, capacity = 4000) { e -> Log.d("MeshMind", "[${e.category}] ${e.message}") }
         val t = NearbyTransport(context, id, scope, log = { msg -> logger.log(LogCategory.PEER, "nearby: $msg") }, peerAllowed = ::peerAllowed)
-        val gateway = GatewayService(id, ::gatewayConfig, JvmHttpExecutor(), isActive = { isGatewayActive },
-            answers = { backend.takeIf { _backendUrl.value.isNotBlank() } })
         val identity = identityStore.identityFor(id, System.currentTimeMillis())
+        val direct = DirectAnswerService({ identity }, { _gateway.value.geminiKey }, { BuildConfig.GEMINI_MODEL })
+        val gateway = GatewayService(id, ::gatewayConfig, JvmHttpExecutor(), isActive = { isGatewayActive },
+            answers = {
+                when {
+                    _backendUrl.value.isNotBlank() -> backend
+                    _gateway.value.geminiKey.isNotBlank() -> direct
+                    else -> null
+                } as AnswerService?
+            })
         val trust = TrustStore(identityStore.anchors())
         val history = sageFile(id).takeIf { it.exists() }?.let { f -> runCatching { ContactHistory.decodeState(f.readBytes(), id) }.getOrNull() }
             ?: ContactHistory(id)

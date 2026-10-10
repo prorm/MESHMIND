@@ -163,13 +163,14 @@ object WireCodec {
         writeByte(a.kind.ordinal); writeText(a.query); writeText(a.text)
         writeShort(a.sources.size); a.sources.forEach { writeText(it.title); writeText(it.url) }
         writeLong(a.createdAt); writeLong(a.expiresAt); writeUTF(a.provider); writeUTF(a.keyId); writeBytes(a.signature)
+        writeOptBytes(a.signerCert)
     }
 
     fun decodeAnswer(b: ByteArray) = read(b) {
         val kind = AnswerKind.entries[readByte().toInt()]
         val query = readText(); val text = readText()
         val sources = List(readShort().toInt()) { AnswerSource(readText(), readText()) }
-        Answer(kind, query, text, sources, readLong(), readLong(), readUTF(), readUTF(), readBytes())
+        Answer(kind, query, text, sources, readLong(), readLong(), readUTF(), readUTF(), readBytes(), readOptBytes())
     }
 
     fun encodeBulletin(x: Bulletin) = write {

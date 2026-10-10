@@ -7,9 +7,10 @@ enum class AnswerKind { ASK, READ }
 data class AnswerSource(val title: String, val url: String)
 
 /**
- * A compact answer produced by the MeshMind backend (search + AI for ASK, readable-text extraction for READ) and
- * signed by the authority key. The signature is what lets any phone cache an answer and hand it to strangers:
- * nobody along the way, gateway included, can alter it without the change being detected.
+ * A compact answer (search + AI for ASK, readable-text extraction for READ), signed either by the MeshMind
+ * authority (answers made by the backend) or by the gateway phone that made it ([keyId] = "node:<gatewayId>",
+ * [signerCert] = that gateway's certificate). The signature is what lets any phone cache an answer and hand it to
+ * strangers: nobody along the way can alter it without the change being detected.
  */
 class Answer(
     val kind: AnswerKind,
@@ -19,10 +20,15 @@ class Answer(
     val createdAt: Long,
     val expiresAt: Long,
     val provider: String,
-    /** Fingerprint of the authority key that signed it. */
+    /** Fingerprint of the authority key that signed it, or "node:<gatewayId>" for a gateway-signed answer. */
     val keyId: String,
     val signature: ByteArray,
+    /** Certificate of the gateway that signed it (node-signed answers only); not covered by the signature. */
+    val signerCert: ByteArray? = null,
 ) {
+    /** Gateway node that signed this answer, or null for authority-signed answers. */
+    val nodeSigner: NodeId? get() = keyId.removePrefix(Bulletin.NODE_KEY_PREFIX).takeIf { keyId.startsWith(Bulletin.NODE_KEY_PREFIX) }
+
     fun signedBytes(): ByteArray = Canon("meshmind-answer-v1").str(kind.name).str(query).str(text).num(sources.size)
         .apply { sources.forEach { str(it.title).str(it.url) } }
         .num(createdAt).num(expiresAt).str(provider).str(keyId).build()

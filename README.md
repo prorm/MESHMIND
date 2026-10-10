@@ -6,26 +6,31 @@
 |---|---|---|
 | `core/` | Pure-Kotlin mesh: routing, store-and-forward, priority, gateway fair-share scheduler, signed packets | `./gradlew :core:test` |
 | `app/` | Android app (Compose + Google Nearby Connections) | `./gradlew :app:assembleDebug` |
-| `backend/` | Python service for Internet-connected gateways: AI answers (Gemini or Claude), phone verification, live-info board | [backend/README.md](backend/README.md) |
+| `backend/` | **Optional** server: phone verification (✓ and organizer roles), official alerts, Claude answers. Not needed for Ask or live weather | [backend/README.md](backend/README.md) |
 | `research/sage/` | SAGE routing model research (the phones run it in shadow mode) | [research/sage/README.md](research/sage/README.md) |
 
-```powershell
-# 1. Backend on a laptop (same Wi-Fi as the gateway phone)
-cd backend
-uv venv .venv --python 3.12; uv pip install --python .venv\Scripts\python.exe -r requirements.txt
-copy .env.example .env          # then put your GEMINI_API_KEY in backend\.env
-.venv\Scripts\python -m meshmind_backend.server   # prints the authority key, the provider, the admin token
+**No server needed.** The gateway phone (the one with Internet) asks Gemini itself, fetches the weather for the
+live-info board from Open-Meteo, and signs every answer with its own key, so phones along the mesh can verify and
+cache it.
 
-# 2. App (JDK 17 + Android SDK)
+```powershell
+# Put your Gemini key in backend\.env (GEMINI_API_KEY=...) or local.properties (gemini.apiKey=...); both are git-ignored.
+# It is built into your debug APK so any phone you install it on can act as a gateway.
 ./gradlew :core:test :app:assembleDebug
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-In the app, put `http://<laptop-ip>:8787` in **Share my Internet** (gateway phone) and **Identity** (to verify each phone).
+On the phone that has Internet, open **Share my Internet** and turn on consent. That's it.
+Optional: run the [backend](backend/README.md) on a server and enter its URL to add phone verification (✓), organizer
+roles and official alerts.
+
+> The key ships inside the APK, which is fine for your own demo phones. Before giving the app to strangers, move the key
+> to a server (the backend) or restrict it to the app's package and signing certificate in Google Cloud.
+
 The phone test plan is in [docs/sprint2-testing.md](docs/sprint2-testing.md).
 
 **Sprint 2: Ask, fair share, trust.**
-- **Ask through the mesh.** Phones with no Internet ask questions and read pages through a gateway phone. Answers come from the backend (Gemini 3.5 Flash-Lite by default; Google Search grounding when billing is enabled) and are signed by the MeshMind authority. Every phone caches verified answers, so the same question is not fetched from the Internet twice.
+- **Ask through the mesh.** Phones with no Internet ask questions and read pages through a gateway phone. Answers come from Gemini 3.5 Flash-Lite, called by the gateway phone itself (or by the optional backend), and are signed by whoever made them. Every phone caches verified answers, so the same question is not fetched from the Internet twice.
 - **Need-aware fair-share queue.** One gateway serves a crowd: SOS first, then emergency, health and safety questions. Waiting raises priority, phones that were just served drop back, and "urgent" claims are capped per phone. Every decision shows its reasons.
 - **Signed packets and verified identity.** Every packet and HELLO is signed (ECDSA P-256), so messages cannot be altered or sent in someone else's name. Phones verify their number once to get a ✓; organizer and responder roles can broadcast notices. Phone numbers stay on the backend.
 - **Live info board.** Weather, organizer notices and official alerts, signed and broadcast to every phone.

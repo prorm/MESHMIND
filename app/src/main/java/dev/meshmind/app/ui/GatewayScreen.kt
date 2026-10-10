@@ -99,12 +99,23 @@ fun GatewayScreen(runtime: MeshRuntime, router: Router?, snap: MeshSnapshot) {
                 Text("Budget: ${settings.perMinute} requests / minute", style = MaterialTheme.typography.labelLarge)
                 Slider(value = settings.perMinute.toFloat(), onValueChange = { v -> runtime.updateGateway { it.copy(perMinute = v.toInt()) } },
                     valueRange = 5f..60f, steps = 10)
-                OutlinedTextField(backendUrl, { runtime.setBackendUrl(it) }, label = { Text("MeshMind backend (answers + live info)") },
-                    placeholder = { Text("http://192.168.1.20:8787") }, singleLine = true, keyboardOptions = IdKeyboard, modifier = Modifier.fillMaxWidth())
-                if (backendUrl.isBlank()) Text("Without a backend this phone can only relay SOS webhooks and raw requests.", color = MeshColors.warn, style = MaterialTheme.typography.bodySmall)
+                Text("Answers come from: ${runtime.answerMode}", style = MaterialTheme.typography.labelLarge,
+                    color = if (runtime.answerMode == "none") MeshColors.sos else MeshColors.ok)
+                var showKey by remember { mutableStateOf(false) }
+                val builtIn = settings.geminiKey.isNotBlank() && settings.geminiKey == dev.meshmind.app.BuildConfig.GEMINI_API_KEY
+                OutlinedTextField(
+                    settings.geminiKey, { v -> runtime.updateGateway { it.copy(geminiKey = v.trim()) } },
+                    label = { Text(if (builtIn) "Gemini API key (built into this build)" else "Gemini API key") },
+                    singleLine = true, keyboardOptions = IdKeyboard, modifier = Modifier.fillMaxWidth(),
+                    visualTransformation = if (showKey) androidx.compose.ui.text.input.VisualTransformation.None else androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                    trailingIcon = { androidx.compose.material3.TextButton(onClick = { showKey = !showKey }) { Text(if (showKey) "Hide" else "Show") } },
+                )
+                OutlinedTextField(backendUrl, { runtime.setBackendUrl(it) }, label = { Text("MeshMind server (optional)") },
+                    placeholder = { Text("leave empty: this phone answers itself") }, singleLine = true, keyboardOptions = IdKeyboard, modifier = Modifier.fillMaxWidth())
                 Text(
-                    "Not an open proxy: questions go only to the MeshMind backend (answers come back signed), raw requests only to " +
-                        "allowlisted HTTPS sites. SOS always goes first; everyone else shares the link fairly.",
+                    "No server needed: this phone asks Gemini itself, fetches weather for the live-info board, and signs every answer " +
+                        "so nobody along the mesh can alter it. A MeshMind server adds phone verification, organizer notices and official alerts. " +
+                        "SOS always goes first; everyone else shares the link fairly.",
                     color = MeshColors.muted, style = MaterialTheme.typography.bodySmall,
                 )
             }

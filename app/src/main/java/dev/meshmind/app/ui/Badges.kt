@@ -74,7 +74,11 @@ fun BulletinItemCard(item: BulletinItem, board: BulletinView, now: Long) {
                 }
                 if (item.body.isNotBlank()) Text(item.body, style = MaterialTheme.typography.bodyMedium)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                    if (board.official) Pill("✓ Official", MeshColors.ok) else Pill("✓ ${board.signerRole.name.lowercase()} · ${board.bulletin.boardId}", MeshColors.ok)
+                    when {
+                        board.official -> Pill("✓ Official", MeshColors.ok)
+                        board.viaGateway -> Pill("via gateway ${board.from.substringBefore('/')}", MeshColors.gateway)
+                        else -> Pill("✓ ${board.signerRole.name.lowercase()} · ${board.bulletin.boardId}", MeshColors.ok)
+                    }
                     Text("${item.source} · ${ago(now - item.issuedAt)}", style = MaterialTheme.typography.labelSmall, color = MeshColors.muted)
                 }
             }

@@ -177,7 +177,12 @@ private fun AnswerCard(r: InetResult, now: Long, onRead: (String) -> Unit, onRet
                         }
                     }
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        if (r.answerVerified) Pill("✓ Signed by MeshMind", MeshColors.ok) else Pill("⚠ Unverified answer", MeshColors.sos)
+                        when (r.answerTrust) {
+                            dev.meshmind.core.security.AnswerTrust.AUTHORITY -> Pill("✓ Signed by MeshMind", MeshColors.ok)
+                            dev.meshmind.core.security.AnswerTrust.VERIFIED_GATEWAY -> Pill("✓ Signed by verified gateway ${a.nodeSigner}", MeshColors.ok)
+                            dev.meshmind.core.security.AnswerTrust.GATEWAY -> Pill("✓ Signed by gateway ${a.nodeSigner} (unverified ID)", MeshColors.warn)
+                            else -> Pill("⚠ Unverified answer", MeshColors.sos)
+                        }
                         Pill(servedLabel(r), MeshColors.gateway)
                         if (resp.need >= 0) Pill("${resp.needCategory} · ${resp.need}/100", MeshColors.priority(dev.meshmind.core.model.Priority.NORMAL))
                     }

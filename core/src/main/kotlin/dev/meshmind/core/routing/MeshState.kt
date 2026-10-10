@@ -184,8 +184,9 @@ data class InetResult(
     val completedAt: Long? = null,
     /** Decoded answer for ASK/READ requests. */
     val answer: Answer? = null,
-    /** True only if a trusted MeshMind authority signed [answer]. */
+    /** True if [answer]'s signature checks out (authority or gateway signed); see [answerTrust] for who signed. */
     val answerVerified: Boolean = false,
+    val answerTrust: dev.meshmind.core.security.AnswerTrust? = null,
     val servedFrom: String = "",
 )
 
@@ -251,6 +252,8 @@ data class BulletinView(
     val from: NodeId,
     val receivedAt: Long,
     val hops: Int,
+    /** A weather-only board signed by a gateway phone that fetched it itself (no MeshMind server involved). */
+    val viaGateway: Boolean = false,
 )
 
 data class MeshSnapshot(
