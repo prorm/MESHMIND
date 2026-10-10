@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MeshMind Conductor</title><link rel="stylesheet" href="/conductor.css"><script src="/conductor.js" defer></script></head>
+<body>
+<header><a class="brand" href="#">MeshMind <span>Conductor</span></a><div class="connection"><span id="connection-dot"></span><span id="connection">Connecting to host phone</span></div><span class="transport-label">USB / OFFLINE MESH</span></header>
+<main>
+  <section class="desk" aria-label="Show controls">
+    <div class="desk-heading"><h1>Conduct the crowd.</h1><p>Shape the space. Send the cue. Let every phone play its part.</p></div>
+    <div class="transport"><label>Show length<select id="duration"><option value="60000">1 minute</option><option value="120000" selected>2 minutes</option><option value="180000">3 minutes</option><option value="300000">5 minutes</option></select></label><button id="start" class="primary">Start show</button><button id="stop" class="danger" disabled>Stop</button></div>
+    <h2>Scene palette</h2><div id="effects" class="effects" aria-label="Choose a scene"></div>
+    <div class="color-pair"><label>Light<input id="primary" type="color" value="#35dcc3"></label><label>Shadow<input id="secondary" type="color" value="#18224c"></label></div>
+    <div class="tempo"><label for="bpm">Tempo <output id="bpm-label">100 BPM</output></label><div class="tempo-input"><input id="bpm" type="range" min="30" max="180" value="100"><button id="tap" title="Tap repeatedly to set tempo">Tap</button></div></div>
+    <label class="range-label" for="spread">Travel spread <output id="spread-label">2.4 s</output></label><input id="spread" type="range" min="0" max="8000" step="100" value="2400">
+    <label class="range-label" for="brightness">Master brightness <output id="brightness-label">85%</output></label><input id="brightness" type="range" min="0" max="100" value="85">
+    <div class="direction"><label><input type="checkbox" id="reverse"> Reverse motion</label></div>
+    <fieldset class="groups"><legend>Send light to</legend><label><input type="checkbox" value="0" checked> 1</label><label><input type="checkbox" value="1" checked> 2</label><label><input type="checkbox" value="2" checked> 3</label><label><input type="checkbox" value="3" checked> 4</label></fieldset>
+    <button id="fire" class="primary fire" disabled>Fire on the next beat <kbd>Space</kbd></button><p class="distribution">Beat aligned, with 3 seconds for distribution.</p>
+    <div class="performance"><button id="blackout" disabled>Blackout <kbd>B</kbd></button><button id="restore" disabled>Restore <kbd>R</kbd></button><button id="finale" disabled>Five-act finale <kbd>F</kbd></button></div>
+  </section>
+  <div class="workspace">
+    <section class="stage-section" aria-label="Stage preview">
+      <div class="stage-header"><div><h2 id="stage-title">Rehearsal canvas</h2><p id="stage-description">Virtual phones preview your scene. Start a show to invite real phones.</p></div><div class="stage-clock" id="clock">STANDBY</div></div>
+      <div class="stage"><canvas id="canvas" aria-label="Color choreography preview across virtual or joined phones"></canvas><div class="stage-axis"><span>FRONT</span><span>BACK</span></div><div class="stage-caption"><span id="stage-mode">SIMULATED PREVIEW · 64 VIRTUAL PHONES</span><span id="active-effect">Traveling wave</span></div></div>
+      <div class="telemetry"><div><strong id="ready-count">0</strong><span>recently synced</span></div><div><strong id="cue-revision">—</strong><span>reported cue</span></div><div><strong id="rtt">—</strong><span>median sync RTT</span></div><button id="grid" disabled>Arrange virtual grid <kbd>G</kbd></button></div>
+    </section>
+    <section class="timeline-section" aria-label="Cue sequence editor">
+      <div class="section-heading"><div><h2>Build the moment.</h2><p>Up to 12 scenes. Cue times use seconds from the show start.</p></div><div class="plan-files"><button id="save">Save plan</button><label class="file-button">Load plan<input id="load" type="file" accept=".json,application/json"></label></div></div>
+      <div class="cue-add"><label>Cue at <input type="number" id="cue-at" min="0" max="299" step="1" value="0"> s</label><button id="add-cue">Add selected scene</button><button id="arm" class="primary" disabled>Arm sequence</button></div>
+      <ol id="timeline" class="timeline"></ol>
+    </section>
+    <section class="phones-section" aria-label="Participant positions">
+      <div class="section-heading"><div><h2>Every phone has a place.</h2><p>Assign groups and positions to make waves travel across the room.</p></div><span id="roster-count">0 / 64 slots</span></div>
+      <p id="roster-empty">No joined phones yet. Open Light Show on a phone and explicitly join the host.</p>
+      <div id="roster"></div>
+      <form id="seat-form" hidden><h3 id="selected-phone">Selected phone</h3><label>Group<select id="seat-group"><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option></select></label><label>Left / right<input id="seat-x" type="range" min="0" max="1000" value="500"></label><label>Front / back<input id="seat-y" type="range" min="0" max="1000" value="500"></label><button type="submit">Assign position</button></form>
+    </section>
+    <footer><p>Preview positions are assigned coordinates, not sensed locations. Packet RTT is not measured screen alignment. SOS stays above show traffic.</p><p>Pairing access ends when laptop control is disabled on the phone.</p></footer>
+  </div>
+</main><div id="notice" role="status" aria-live="polite" hidden></div>
+</body></html>

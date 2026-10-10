@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Debug builds only: lets a gateway phone reach a demo backend on a laptop over plain http on the local Wi-Fi.
+     Release builds keep Android's default (HTTPS only). -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

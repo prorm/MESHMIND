@@ -1,0 +1,1979 @@
+{
+  "session_id": "physical_20261006_01",
+  "started_at": "2026-10-06T23:58:58.186597+05:30",
+  "topology": "A <-> B <-> C; software peer filter; no physical RF isolation",
+  "devices": {
+    "A": {
+      "adb_id": "ac7626fb",
+      "aliases": [
+        "ac7626fb"
+      ],
+      "hardware_serial": "ac7626fb",
+      "node_id": "A-fbd6",
+      "properties": {
+        "ro.product.model": "CPH2585",
+        "ro.product.manufacturer": "OnePlus",
+        "ro.product.marketname": "",
+        "ro.build.version.release": "16",
+        "ro.build.version.sdk": "36",
+        "ro.build.fingerprint": "OnePlus/CPH2585IN/OP5D35L1:16/TP1A.220905.001/U.R4T3.14b8271_eeda2c_f016dc:user/release-keys"
+      },
+      "original_preferences": "<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n<map>\n    <string name=\"nodeId\">A-fbd6</string>\n    <set name=\"peerFilter\">\n        <string>B</string>\n    </set>\n</map>",
+      "connection": "USB",
+      "wifi_on": "1",
+      "bluetooth_on": "1",
+      "installed_apk_sha256": "190e24e22253bdb430d4ee2ba15760248796440ec3e9edc3263e35aae8e949fe"
+    },
+    "B": {
+      "adb_id": "192.168.29.70:41549",
+      "aliases": [
+        "192.168.29.70:41549",
+        "adb-FQWSCIKZDM7T5XUC-aY9Tvp._adb-tls-connect._tcp"
+      ],
+      "hardware_serial": "FQWSCIKZDM7T5XUC",
+      "node_id": "B-e84d",
+      "properties": {
+        "ro.product.model": "RMX5108",
+        "ro.product.manufacturer": "realme",
+        "ro.product.marketname": "",
+        "ro.build.version.release": "16",
+        "ro.build.version.sdk": "36",
+        "ro.build.fingerprint": "realme/RMX5108IN/RE6450L1:16/UKQ1.231108.001/V.R4T2.4a21f81-24b67d2-24b1f7b:user/release-keys"
+      },
+      "original_preferences": "<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n<map>\n    <string name=\"nodeId\">B-e84d</string>\n    <set name=\"peerFilter\">\n        <string>A</string>\n        <string>C</string>\n    </set>\n</map>",
+      "connection": "wireless",
+      "wifi_on": "1",
+      "bluetooth_on": "1",
+      "installed_apk_sha256": "190e24e22253bdb430d4ee2ba15760248796440ec3e9edc3263e35aae8e949fe"
+    },
+    "C": {
+      "adb_id": "adb-RZCY91EJ4ET-0L9Aed._adb-tls-connect._tcp",
+      "aliases": [
+        "adb-RZCY91EJ4ET-0L9Aed._adb-tls-connect._tcp"
+      ],
+      "hardware_serial": "RZCY91EJ4ET",
+      "node_id": "C-507b",
+      "properties": {
+        "ro.product.model": "SM-S928B",
+        "ro.product.manufacturer": "samsung",
+        "ro.product.marketname": "",
+        "ro.build.version.release": "16",
+        "ro.build.version.sdk": "36",
+        "ro.build.fingerprint": "samsung/e3qxins/e3q:16/BP4A.251205.006/S928BXXS6DZH2:user/release-keys"
+      },
+      "original_preferences": "<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n<map>\n    <boolean name=\"gw.force\" value=\"false\" />\n    <boolean name=\"gw.consent\" value=\"true\" />\n    <set name=\"peerFilter\">\n        <string>B</string>\n    </set>\n    <set name=\"gw.allowlist\">\n        <string>en.wikipedia.org</string>\n        <string>wttr.in</string>\n        <string>api.open-meteo.com</string>\n        <string>api.github.com</string>\n        <string>example.com</string>\n        <string>webhook.site</string>\n        <string>ntfy.sh</string>\n        <string>httpbin.org</string>\n    </set>\n    <string name=\"nodeId\">C-507b</string>\n    <string name=\"gw.webhook\"></string>\n</map>",
+      "connection": "wireless",
+      "wifi_on": "1",
+      "bluetooth_on": "1",
+      "installed_apk_sha256": "190e24e22253bdb430d4ee2ba15760248796440ec3e9edc3263e35aae8e949fe"
+    }
+  },
+  "safety": "Wi-Fi, Bluetooth, airplane mode and IP routes are not modified. Outages stop MeshMind only.",
+  "endpoint": "https://example.com/",
+  "quantile_method": "Hyndman-Fan type 7: linear interpolation at (n-1)*p; population standard deviation; successful valid samples only; p99 unstable below 100.",
+  "apk_sha256": "190e24e22253bdb430d4ee2ba15760248796440ec3e9edc3263e35aae8e949fe",
+  "apk_path": "D:\\New folder\\MeshMind\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "configuration": {
+    "counts": {
+      "text": 50,
+      "internet": 30,
+      "store_forward": 40,
+      "sos_idle": 30,
+      "sos_low": 30,
+      "sos_medium": 30,
+      "sos_high": 30,
+      "discovery": 20,
+      "relay_recovery": 20
+    },
+    "warmups": 5,
+    "outages_ms": [
+      5000,
+      10000,
+      20000,
+      30000
+    ],
+    "low_bytes": 131072,
+    "medium_bytes": 524288,
+    "high_bytes": 1048576,
+    "internet_spacing_s": 11,
+    "packet_timeout_s": 60,
+    "recovery_timeout_s": 120,
+    "bulk_timeout_s": 180,
+    "mesh_poll_s": 0.5
+  },
+  "preflight_snapshots": {
+    "A": {
+      "commandTime": 1791311398669,
+      "before": {
+        "edges": [
+          {
+            "first": "A-fbd6",
+            "second": "B-e84d"
+          },
+          {
+            "first": "B-e84d",
+            "second": "C-507b"
+          }
+        ],
+        "gateways": [
+          {
+            "expiresAt": 1791311488061,
+            "gatewayId": "C-507b",
+            "hopDistance": 2,
+            "lastSeen": 1791311398061,
+            "viaPeer": "B-e84d"
+          }
+        ],
+        "inbox": [],
+        "inet": [],
+        "isGateway": false,
+        "knownNodes": [
+          "B-e84d",
+          "C-507b",
+          "A-fbd6"
+        ],
+        "metrics": [],
+        "peers": [
+          {
+            "bytesSent": 300,
+            "connectedAt": 1791311388407,
+            "endpointId": "L8Q3",
+            "framesSent": 2,
+            "nodeId": "B-e84d",
+            "queued": 0
+          }
+        ],
+        "queued": [
+          {
+            "ageMs": 2532686,
+            "destinationId": "*",
+            "hops": 0,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "sourceId": "A-fbd6",
+            "state": "FORWARDING",
+            "ttl": 8,
+            "type": "SOS"
+          }
+        ],
+        "selfId": "A-fbd6",
+        "stats": {
+          "acksReceived": 0,
+          "beaconsReceived": 1,
+          "bytesReceived": 416,
+          "bytesSent": 300,
+          "deliveredToMe": 0,
+          "duplicatesRejected": 0,
+          "expired": 5,
+          "framesReceived": 3,
+          "inetExecuted": 0,
+          "packetsForwarded": 0,
+          "packetsOriginated": 0,
+          "sendFailures": 0,
+          "ttlExhausted": 0
+        },
+        "tracked": [
+          {
+            "confirmedBy": [],
+            "createdAt": 1791309022760,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "805ff3c3-c1b8-426b-9b25-17bc97d52765",
+            "preview": "HTTP_GET https:/google.com",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791309001117,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "0147a4db-160c-4cdf-82b3-9fdd142e1653",
+            "preview": "HTTP_GET https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current_weather=true",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308865549,
+            "deliveredRoute": [],
+            "destination": "*",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "SOS",
+            "oneWayMs": null,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "preview": "MEDICAL",
+            "priority": "CRITICAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "IN_TRANSIT",
+            "type": "SOS"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308782507,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "e3e1a37c-571f-4e47-87e4-58cb93166a27",
+            "preview": "HTTP_GET https://example.com/",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308664088,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "914d2498-c634-47b9-a529-deb6455040c0",
+            "preview": "HTTP_GET https://example.com/",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308651692,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "a0ea4374-1383-4fda-97b4-ad20b9c38469",
+            "preview": "HTTP_GET https://example.com/",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308617705,
+            "deliveredRoute": [],
+            "destination": "C-507b",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "COORDINATION",
+            "oneWayMs": null,
+            "packetId": "7c397038-3bf7-421d-a7f9-752efdcfad3f",
+            "preview": "Meet me at Gate C",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "TEXT"
+          }
+        ],
+        "transfers": []
+      },
+      "ok": true,
+      "deviceTime": 1791311398672,
+      "nodeId": "A-fbd6",
+      "peerFilter": [
+        "B"
+      ],
+      "internetValidated": true,
+      "gatewayActive": false,
+      "running": true,
+      "snapshot": {
+        "edges": [
+          {
+            "first": "A-fbd6",
+            "second": "B-e84d"
+          },
+          {
+            "first": "B-e84d",
+            "second": "C-507b"
+          }
+        ],
+        "gateways": [
+          {
+            "expiresAt": 1791311488061,
+            "gatewayId": "C-507b",
+            "hopDistance": 2,
+            "lastSeen": 1791311398061,
+            "viaPeer": "B-e84d"
+          }
+        ],
+        "inbox": [],
+        "inet": [],
+        "isGateway": false,
+        "knownNodes": [
+          "B-e84d",
+          "C-507b",
+          "A-fbd6"
+        ],
+        "metrics": [],
+        "peers": [
+          {
+            "bytesSent": 300,
+            "connectedAt": 1791311388407,
+            "endpointId": "L8Q3",
+            "framesSent": 2,
+            "nodeId": "B-e84d",
+            "queued": 0
+          }
+        ],
+        "queued": [
+          {
+            "ageMs": 2532686,
+            "destinationId": "*",
+            "hops": 0,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "sourceId": "A-fbd6",
+            "state": "FORWARDING",
+            "ttl": 8,
+            "type": "SOS"
+          }
+        ],
+        "selfId": "A-fbd6",
+        "stats": {
+          "acksReceived": 0,
+          "beaconsReceived": 1,
+          "bytesReceived": 416,
+          "bytesSent": 300,
+          "deliveredToMe": 0,
+          "duplicatesRejected": 0,
+          "expired": 5,
+          "framesReceived": 3,
+          "inetExecuted": 0,
+          "packetsForwarded": 0,
+          "packetsOriginated": 0,
+          "sendFailures": 0,
+          "ttlExhausted": 0
+        },
+        "tracked": [
+          {
+            "confirmedBy": [],
+            "createdAt": 1791309022760,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "805ff3c3-c1b8-426b-9b25-17bc97d52765",
+            "preview": "HTTP_GET https:/google.com",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791309001117,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "0147a4db-160c-4cdf-82b3-9fdd142e1653",
+            "preview": "HTTP_GET https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current_weather=true",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308865549,
+            "deliveredRoute": [],
+            "destination": "*",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "SOS",
+            "oneWayMs": null,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "preview": "MEDICAL",
+            "priority": "CRITICAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "IN_TRANSIT",
+            "type": "SOS"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308782507,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "e3e1a37c-571f-4e47-87e4-58cb93166a27",
+            "preview": "HTTP_GET https://example.com/",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308664088,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "914d2498-c634-47b9-a529-deb6455040c0",
+            "preview": "HTTP_GET https://example.com/",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308651692,
+            "deliveredRoute": [],
+            "destination": "@gateway",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "INTERNET",
+            "oneWayMs": null,
+            "packetId": "a0ea4374-1383-4fda-97b4-ad20b9c38469",
+            "preview": "HTTP_GET https://example.com/",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "INET_REQUEST"
+          },
+          {
+            "confirmedBy": [],
+            "createdAt": 1791308617705,
+            "deliveredRoute": [],
+            "destination": "C-507b",
+            "firstHops": [],
+            "hopCount": 0,
+            "label": "COORDINATION",
+            "oneWayMs": null,
+            "packetId": "7c397038-3bf7-421d-a7f9-752efdcfad3f",
+            "preview": "Meet me at Gate C",
+            "priority": "NORMAL",
+            "reasons": [
+              "restored"
+            ],
+            "rttMs": null,
+            "status": "DELIVERED",
+            "type": "TEXT"
+          }
+        ],
+        "transfers": []
+      },
+      "logs": [
+        {
+          "category": "INFO",
+          "message": "router A-fbd6 started: restored 25 packets (6 pending), 11 acked ids",
+          "packetId": null,
+          "time": 1791311348184
+        },
+        {
+          "category": "INFO",
+          "message": "mesh started as A-fbd6 (Nearby dev.meshmind.mesh.v1, P2P_CLUSTER)",
+          "packetId": null,
+          "time": 1791311348192
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: advertising as A-fbd6",
+          "packetId": null,
+          "time": 1791311350253
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovery started",
+          "packetId": null,
+          "time": 1791311350299
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 84744a8f A-fbd6->C-507b after 2609s",
+          "packetId": "84744a8f-71b9-4df2-aff5-6b7df0d11e47",
+          "time": 1791311358202
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK b6caa65b A-fbd6->C-507b after 2609s",
+          "packetId": "b6caa65b-6a0c-453a-9c89-db035fd4bd4a",
+          "time": 1791311358205
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 005ba5ff A-fbd6->C-507b after 2575s",
+          "packetId": "005ba5ff-8360-4d61-8964-717a0296aacd",
+          "time": 1791311358208
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK c7002ee7 A-fbd6->C-507b after 2355s",
+          "packetId": "c7002ee7-a617-4d43-a64e-66f4727f197b",
+          "time": 1791311358211
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK cf4aeecc A-fbd6->C-507b after 2335s",
+          "packetId": "cf4aeecc-c18c-4012-9067-f68122964585",
+          "time": 1791311358212
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovered B-e84d (L8Q3)",
+          "packetId": null,
+          "time": 1791311386274
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: connection initiated with B-e84d (outgoing)",
+          "packetId": null,
+          "time": 1791311388331
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: connection requested to B-e84d",
+          "packetId": null,
+          "time": 1791311388332
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: CONNECTED to B-e84d (L8Q3)",
+          "packetId": null,
+          "time": 1791311388406
+        },
+        {
+          "category": "PEER",
+          "message": "link up: endpoint L8Q3 (sending HELLO)",
+          "packetId": null,
+          "time": 1791311388410
+        },
+        {
+          "category": "PEER",
+          "message": "handshake: endpoint L8Q3 is node B-e84d; sending SUMMARY (1 held, 11 acked)",
+          "packetId": null,
+          "time": 1791311388445
+        },
+        {
+          "category": "QUEUE",
+          "message": "SUMMARY from B-e84d: holds 1, acked 11 (0 new); requesting 0 missing",
+          "packetId": null,
+          "time": 1791311388532
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovered C-507b (H7QN)",
+          "packetId": null,
+          "time": 1791311397450
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: not linking to C-507b (topology lock)",
+          "packetId": null,
+          "time": 1791311397451
+        },
+        {
+          "category": "RX",
+          "message": "rx GATEWAY_BEACON 62e1a30c NORMAL C-507b→* ttl=6 hops=2 route=C-507b→B-e84d→A-fbd6 from B-e84d",
+          "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+          "time": 1791311398059
+        },
+        {
+          "category": "BEACON",
+          "message": "gateway C-507b at 2 hop(s) via B-e84d",
+          "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+          "time": 1791311398062
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: not linking to C-507b (topology lock)",
+          "packetId": null,
+          "time": 1791311398205
+        }
+      ],
+      "hostBeginMs": 1791311398005.2808,
+      "hostEndMs": 1791311398426.622,
+      "clockOffsetEstimateMs": 456.048583984375,
+      "clockOffsetUncertaintyMs": 210.670654296875,
+      "command": "snapshot",
+      "extras": {},
+      "role": "A",
+      "rawFile": "raw/b0246285fb9e84573b4781261f0e85303_A_snapshot.json"
+    },
+    "B": {
+      "commandTime": 1791311397976,
+      "before": {
+        "edges": [
+          {
+            "first": "A-fbd6",
+            "second": "B-e84d"
+          },
+          {
+            "first": "B-e84d",
+            "second": "C-507b"
+          }
+        ],
+        "gateways": [
+          {
+            "expiresAt": 1791311487315,
+            "gatewayId": "C-507b",
+            "hopDistance": 1,
+            "lastSeen": 1791311397315,
+            "viaPeer": "C-507b"
+          }
+        ],
+        "inbox": [
+          {
+            "from": "A-fbd6",
+            "hopCount": 1,
+            "label": "SOS",
+            "latencyMs": -535,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "receivedAt": 1791308865014,
+            "route": [
+              "A-fbd6",
+              "B-e84d"
+            ],
+            "text": "MEDICAL",
+            "to": "*",
+            "type": "SOS"
+          }
+        ],
+        "inet": [],
+        "isGateway": false,
+        "knownNodes": [
+          "A-fbd6",
+          "C-507b",
+          "B-e84d"
+        ],
+        "metrics": [],
+        "peers": [
+          {
+            "bytesSent": 416,
+            "connectedAt": 1791311387662,
+            "endpointId": "C7U2",
+            "framesSent": 3,
+            "nodeId": "A-fbd6",
+            "queued": 0
+          },
+          {
+            "bytesSent": 407,
+            "connectedAt": 1791311397208,
+            "endpointId": "H7QN",
+            "framesSent": 3,
+            "nodeId": "C-507b",
+            "queued": 0
+          }
+        ],
+        "queued": [
+          {
+            "ageMs": 2531793,
+            "destinationId": "*",
+            "hops": 1,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "sourceId": "A-fbd6",
+            "state": "FORWARDING",
+            "ttl": 7,
+            "type": "SOS"
+          }
+        ],
+        "selfId": "B-e84d",
+        "stats": {
+          "acksReceived": 0,
+          "beaconsReceived": 1,
+          "bytesReceived": 724,
+          "bytesSent": 823,
+          "deliveredToMe": 0,
+          "duplicatesRejected": 0,
+          "expired": 13,
+          "framesReceived": 5,
+          "inetExecuted": 0,
+          "packetsForwarded": 1,
+          "packetsOriginated": 0,
+          "sendFailures": 0,
+          "ttlExhausted": 0
+        },
+        "tracked": [],
+        "transfers": []
+      },
+      "ok": true,
+      "deviceTime": 1791311397976,
+      "nodeId": "B-e84d",
+      "peerFilter": [
+        "A",
+        "C"
+      ],
+      "internetValidated": true,
+      "gatewayActive": false,
+      "running": true,
+      "snapshot": {
+        "edges": [
+          {
+            "first": "A-fbd6",
+            "second": "B-e84d"
+          },
+          {
+            "first": "B-e84d",
+            "second": "C-507b"
+          }
+        ],
+        "gateways": [
+          {
+            "expiresAt": 1791311487315,
+            "gatewayId": "C-507b",
+            "hopDistance": 1,
+            "lastSeen": 1791311397315,
+            "viaPeer": "C-507b"
+          }
+        ],
+        "inbox": [
+          {
+            "from": "A-fbd6",
+            "hopCount": 1,
+            "label": "SOS",
+            "latencyMs": -535,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "receivedAt": 1791308865014,
+            "route": [
+              "A-fbd6",
+              "B-e84d"
+            ],
+            "text": "MEDICAL",
+            "to": "*",
+            "type": "SOS"
+          }
+        ],
+        "inet": [],
+        "isGateway": false,
+        "knownNodes": [
+          "A-fbd6",
+          "C-507b",
+          "B-e84d"
+        ],
+        "metrics": [],
+        "peers": [
+          {
+            "bytesSent": 416,
+            "connectedAt": 1791311387662,
+            "endpointId": "C7U2",
+            "framesSent": 3,
+            "nodeId": "A-fbd6",
+            "queued": 0
+          },
+          {
+            "bytesSent": 407,
+            "connectedAt": 1791311397208,
+            "endpointId": "H7QN",
+            "framesSent": 3,
+            "nodeId": "C-507b",
+            "queued": 0
+          }
+        ],
+        "queued": [
+          {
+            "ageMs": 2531793,
+            "destinationId": "*",
+            "hops": 1,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "sourceId": "A-fbd6",
+            "state": "FORWARDING",
+            "ttl": 7,
+            "type": "SOS"
+          }
+        ],
+        "selfId": "B-e84d",
+        "stats": {
+          "acksReceived": 0,
+          "beaconsReceived": 1,
+          "bytesReceived": 724,
+          "bytesSent": 823,
+          "deliveredToMe": 0,
+          "duplicatesRejected": 0,
+          "expired": 13,
+          "framesReceived": 5,
+          "inetExecuted": 0,
+          "packetsForwarded": 1,
+          "packetsOriginated": 0,
+          "sendFailures": 0,
+          "ttlExhausted": 0
+        },
+        "tracked": [],
+        "transfers": []
+      },
+      "logs": [
+        {
+          "category": "INFO",
+          "message": "router B-e84d started: restored 25 packets (14 pending), 11 acked ids",
+          "packetId": null,
+          "time": 1791311384234
+        },
+        {
+          "category": "INFO",
+          "message": "mesh started as B-e84d (Nearby dev.meshmind.mesh.v1, P2P_CLUSTER)",
+          "packetId": null,
+          "time": 1791311384264
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: advertising as B-e84d",
+          "packetId": null,
+          "time": 1791311386310
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovery started",
+          "packetId": null,
+          "time": 1791311386393
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovered A-fbd6 (C7U2)",
+          "packetId": null,
+          "time": 1791311386704
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: connection initiated with A-fbd6 (incoming)",
+          "packetId": null,
+          "time": 1791311387650
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: CONNECTED to A-fbd6 (C7U2)",
+          "packetId": null,
+          "time": 1791311387661
+        },
+        {
+          "category": "PEER",
+          "message": "link up: endpoint C7U2 (sending HELLO)",
+          "packetId": null,
+          "time": 1791311387666
+        },
+        {
+          "category": "PEER",
+          "message": "handshake: endpoint C7U2 is node A-fbd6; sending SUMMARY (1 held, 11 acked)",
+          "packetId": null,
+          "time": 1791311387729
+        },
+        {
+          "category": "QUEUE",
+          "message": "SUMMARY from A-fbd6: holds 1, acked 11 (0 new); requesting 0 missing",
+          "packetId": null,
+          "time": 1791311387784
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK d589bfdc C-507b->A-fbd6 after 2776s",
+          "packetId": "d589bfdc-58e6-4080-b89b-7bea1b03903a",
+          "time": 1791311394265
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 40024d77 C-507b->A-fbd6 after 2646s",
+          "packetId": "40024d77-a635-4c34-9579-9deda119fd36",
+          "time": 1791311394267
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK ddfb5794 C-507b->A-fbd6 after 2646s",
+          "packetId": "ddfb5794-0973-40e4-8c45-58b7ed3bccb3",
+          "time": 1791311394268
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 84744a8f A-fbd6->C-507b after 2645s",
+          "packetId": "84744a8f-71b9-4df2-aff5-6b7df0d11e47",
+          "time": 1791311394271
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK b6caa65b A-fbd6->C-507b after 2645s",
+          "packetId": "b6caa65b-6a0c-453a-9c89-db035fd4bd4a",
+          "time": 1791311394274
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 961489c8 C-507b->A-fbd6 after 2611s",
+          "packetId": "961489c8-fd6a-4c11-9d82-b2c7a53ac79d",
+          "time": 1791311394275
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 005ba5ff A-fbd6->C-507b after 2611s",
+          "packetId": "005ba5ff-8360-4d61-8964-717a0296aacd",
+          "time": 1791311394276
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 8f9325ed B-e84d->A-fbd6 after 2529s",
+          "packetId": "8f9325ed-df0f-4ba0-a585-846ed8dfc9ef",
+          "time": 1791311394278
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 09d952ad C-507b->A-fbd6 after 2528s",
+          "packetId": "09d952ad-cfa5-4143-88c1-ccbe1905508c",
+          "time": 1791311394279
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 96c4f764 C-507b->A-fbd6 after 2393s",
+          "packetId": "96c4f764-5329-4e50-8e7a-829af1d20126",
+          "time": 1791311394280
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK c7002ee7 A-fbd6->C-507b after 2391s",
+          "packetId": "c7002ee7-a617-4d43-a64e-66f4727f197b",
+          "time": 1791311394281
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK 221eddb1 C-507b->A-fbd6 after 2371s",
+          "packetId": "221eddb1-9aff-4b5b-9299-65613e6c1cac",
+          "time": 1791311394282
+        },
+        {
+          "category": "EXPIRY",
+          "message": "expired ACK cf4aeecc A-fbd6->C-507b after 2371s",
+          "packetId": "cf4aeecc-c18c-4012-9067-f68122964585",
+          "time": 1791311394285
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovered C-507b (H7QN)",
+          "packetId": null,
+          "time": 1791311396954
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: connection initiated with C-507b (outgoing)",
+          "packetId": null,
+          "time": 1791311397186
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: connection requested to C-507b",
+          "packetId": null,
+          "time": 1791311397194
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: CONNECTED to C-507b (H7QN)",
+          "packetId": null,
+          "time": 1791311397206
+        },
+        {
+          "category": "PEER",
+          "message": "link up: endpoint H7QN (sending HELLO)",
+          "packetId": null,
+          "time": 1791311397209
+        },
+        {
+          "category": "PEER",
+          "message": "handshake: endpoint H7QN is node C-507b (gateway); sending SUMMARY (1 held, 11 acked)",
+          "packetId": null,
+          "time": 1791311397242
+        },
+        {
+          "category": "QUEUE",
+          "message": "SUMMARY from C-507b: holds 2, acked 11 (0 new); requesting 1 missing",
+          "packetId": null,
+          "time": 1791311397269
+        },
+        {
+          "category": "RX",
+          "message": "rx GATEWAY_BEACON 62e1a30c NORMAL C-507b→* ttl=7 hops=1 route=C-507b→B-e84d from C-507b",
+          "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+          "time": 1791311397315
+        },
+        {
+          "category": "BEACON",
+          "message": "gateway C-507b at 1 hop(s) via C-507b",
+          "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+          "time": 1791311397315
+        },
+        {
+          "category": "FORWARD",
+          "message": "forwarded GATEWAY_BEACON 62e1a30c NORMAL → A-fbd6 (ttl 6 hop 2) 116B, 0 left in queue",
+          "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+          "time": 1791311397342
+        }
+      ],
+      "hostBeginMs": 1791311398012.2927,
+      "hostEndMs": 1791311398613.269,
+      "clockOffsetEstimateMs": -336.78076171875,
+      "clockOffsetUncertaintyMs": 300.4881591796875,
+      "command": "snapshot",
+      "extras": {},
+      "role": "B",
+      "rawFile": "raw/b88bd438084c64726aaf0a852a88d466c_B_snapshot.json"
+    },
+    "C": {
+      "commandTime": 1791311398514,
+      "before": {
+        "edges": [
+          {
+            "first": "B-e84d",
+            "second": "C-507b"
+          }
+        ],
+        "gateways": [],
+        "inbox": [
+          {
+            "from": "A-fbd6",
+            "hopCount": 2,
+            "label": "SOS",
+            "latencyMs": 58,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "receivedAt": 1791308865607,
+            "route": [
+              "A-fbd6",
+              "B-e84d",
+              "C-507b"
+            ],
+            "text": "MEDICAL",
+            "to": "*",
+            "type": "SOS"
+          },
+          {
+            "from": "A-fbd6",
+            "hopCount": 2,
+            "label": "COORDINATION",
+            "latencyMs": -124,
+            "packetId": "7c397038-3bf7-421d-a7f9-752efdcfad3f",
+            "priority": "NORMAL",
+            "receivedAt": 1791308617581,
+            "route": [
+              "A-fbd6",
+              "B-e84d",
+              "C-507b"
+            ],
+            "text": "Meet me at Gate C",
+            "to": "C-507b",
+            "type": "TEXT"
+          }
+        ],
+        "inet": [],
+        "isGateway": true,
+        "knownNodes": [
+          "B-e84d",
+          "C-507b"
+        ],
+        "metrics": [],
+        "peers": [
+          {
+            "bytesSent": 424,
+            "connectedAt": 1791311397716,
+            "endpointId": "L8Q3",
+            "framesSent": 3,
+            "nodeId": "B-e84d",
+            "queued": 0
+          }
+        ],
+        "queued": [
+          {
+            "ageMs": 2532263,
+            "destinationId": "*",
+            "hops": 2,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "sourceId": "A-fbd6",
+            "state": "QUEUED",
+            "ttl": 6,
+            "type": "SOS"
+          }
+        ],
+        "selfId": "C-507b",
+        "stats": {
+          "acksReceived": 0,
+          "beaconsReceived": 0,
+          "bytesReceived": 407,
+          "bytesSent": 424,
+          "deliveredToMe": 0,
+          "duplicatesRejected": 0,
+          "expired": 0,
+          "framesReceived": 3,
+          "inetExecuted": 0,
+          "packetsForwarded": 0,
+          "packetsOriginated": 0,
+          "sendFailures": 0,
+          "ttlExhausted": 0
+        },
+        "tracked": [],
+        "transfers": []
+      },
+      "ok": true,
+      "deviceTime": 1791311398514,
+      "nodeId": "C-507b",
+      "peerFilter": [
+        "B"
+      ],
+      "internetValidated": true,
+      "gatewayActive": true,
+      "running": true,
+      "snapshot": {
+        "edges": [
+          {
+            "first": "B-e84d",
+            "second": "C-507b"
+          }
+        ],
+        "gateways": [],
+        "inbox": [
+          {
+            "from": "A-fbd6",
+            "hopCount": 2,
+            "label": "SOS",
+            "latencyMs": 58,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "receivedAt": 1791308865607,
+            "route": [
+              "A-fbd6",
+              "B-e84d",
+              "C-507b"
+            ],
+            "text": "MEDICAL",
+            "to": "*",
+            "type": "SOS"
+          },
+          {
+            "from": "A-fbd6",
+            "hopCount": 2,
+            "label": "COORDINATION",
+            "latencyMs": -124,
+            "packetId": "7c397038-3bf7-421d-a7f9-752efdcfad3f",
+            "priority": "NORMAL",
+            "receivedAt": 1791308617581,
+            "route": [
+              "A-fbd6",
+              "B-e84d",
+              "C-507b"
+            ],
+            "text": "Meet me at Gate C",
+            "to": "C-507b",
+            "type": "TEXT"
+          }
+        ],
+        "inet": [],
+        "isGateway": true,
+        "knownNodes": [
+          "B-e84d",
+          "C-507b"
+        ],
+        "metrics": [],
+        "peers": [
+          {
+            "bytesSent": 424,
+            "connectedAt": 1791311397716,
+            "endpointId": "L8Q3",
+            "framesSent": 3,
+            "nodeId": "B-e84d",
+            "queued": 0
+          }
+        ],
+        "queued": [
+          {
+            "ageMs": 2532263,
+            "destinationId": "*",
+            "hops": 2,
+            "packetId": "44405226-fd49-4962-97da-d341d0794028",
+            "priority": "CRITICAL",
+            "sourceId": "A-fbd6",
+            "state": "QUEUED",
+            "ttl": 6,
+            "type": "SOS"
+          }
+        ],
+        "selfId": "C-507b",
+        "stats": {
+          "acksReceived": 0,
+          "beaconsReceived": 0,
+          "bytesReceived": 407,
+          "bytesSent": 424,
+          "deliveredToMe": 0,
+          "duplicatesRejected": 0,
+          "expired": 0,
+          "framesReceived": 3,
+          "inetExecuted": 0,
+          "packetsForwarded": 0,
+          "packetsOriginated": 0,
+          "sendFailures": 0,
+          "ttlExhausted": 0
+        },
+        "tracked": [],
+        "transfers": []
+      },
+      "logs": [
+        {
+          "category": "INFO",
+          "message": "router C-507b started: restored 24 packets (8 pending), 11 acked ids",
+          "packetId": null,
+          "time": 1791311395835
+        },
+        {
+          "category": "INFO",
+          "message": "mesh started as C-507b (Nearby dev.meshmind.mesh.v1, P2P_CLUSTER)",
+          "packetId": null,
+          "time": 1791311395841
+        },
+        {
+          "category": "GATEWAY",
+          "message": "this phone is now an Internet gateway",
+          "packetId": null,
+          "time": 1791311395844
+        },
+        {
+          "category": "BEACON",
+          "message": "gateway beacon #1 sent to 0 peer(s)",
+          "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+          "time": 1791311395845
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: advertising as C-507b",
+          "packetId": null,
+          "time": 1791311397252
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovery started",
+          "packetId": null,
+          "time": 1791311397277
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovered B-e84d (L8Q3)",
+          "packetId": null,
+          "time": 1791311397337
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: discovered A-fbd6 (C7U2)",
+          "packetId": null,
+          "time": 1791311397508
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: not linking to A-fbd6 (topology lock)",
+          "packetId": null,
+          "time": 1791311397509
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: connection initiated with B-e84d (incoming)",
+          "packetId": null,
+          "time": 1791311397691
+        },
+        {
+          "category": "PEER",
+          "message": "nearby: CONNECTED to B-e84d (L8Q3)",
+          "packetId": null,
+          "time": 1791311397716
+        },
+        {
+          "category": "PEER",
+          "message": "link up: endpoint L8Q3 (sending HELLO)",
+          "packetId": null,
+          "time": 1791311397717
+        },
+        {
+          "category": "PEER",
+          "message": "handshake: endpoint L8Q3 is node B-e84d; sending SUMMARY (2 held, 11 acked)",
+          "packetId": null,
+          "time": 1791311397736
+        },
+        {
+          "category": "QUEUE",
+          "message": "SUMMARY from B-e84d: holds 1, acked 11 (0 new); requesting 0 missing",
+          "packetId": null,
+          "time": 1791311397762
+        },
+        {
+          "category": "QUEUE",
+          "message": "B-e84d requested 1 packets; serving 1",
+          "packetId": null,
+          "time": 1791311397803
+        },
+        {
+          "category": "FORWARD",
+          "message": "sent GATEWAY_BEACON 62e1a30c NORMAL → B-e84d (ttl 7 hop 1) 108B, 0 left in queue",
+          "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+          "time": 1791311397812
+        }
+      ],
+      "hostBeginMs": 1791311398021.292,
+      "hostEndMs": 1791311398532.743,
+      "clockOffsetEstimateMs": 236.982421875,
+      "clockOffsetUncertaintyMs": 255.7254638671875,
+      "command": "snapshot",
+      "extras": {},
+      "role": "C",
+      "rawFile": "raw/b9dd93f3ee793443caa568771f613eb5e_C_snapshot.json"
+    }
+  },
+  "gateway_snapshot": {
+    "commandTime": 1791311399466,
+    "before": {
+      "edges": [
+        {
+          "first": "A-fbd6",
+          "second": "B-e84d"
+        },
+        {
+          "first": "B-e84d",
+          "second": "C-507b"
+        }
+      ],
+      "gateways": [
+        {
+          "expiresAt": 1791311488061,
+          "gatewayId": "C-507b",
+          "hopDistance": 2,
+          "lastSeen": 1791311398061,
+          "viaPeer": "B-e84d"
+        }
+      ],
+      "inbox": [],
+      "inet": [],
+      "isGateway": false,
+      "knownNodes": [
+        "B-e84d",
+        "C-507b",
+        "A-fbd6"
+      ],
+      "metrics": [],
+      "peers": [
+        {
+          "bytesSent": 300,
+          "connectedAt": 1791311388407,
+          "endpointId": "L8Q3",
+          "framesSent": 2,
+          "nodeId": "B-e84d",
+          "queued": 0
+        }
+      ],
+      "queued": [
+        {
+          "ageMs": 2532686,
+          "destinationId": "*",
+          "hops": 0,
+          "packetId": "44405226-fd49-4962-97da-d341d0794028",
+          "priority": "CRITICAL",
+          "sourceId": "A-fbd6",
+          "state": "FORWARDING",
+          "ttl": 8,
+          "type": "SOS"
+        }
+      ],
+      "selfId": "A-fbd6",
+      "stats": {
+        "acksReceived": 0,
+        "beaconsReceived": 1,
+        "bytesReceived": 416,
+        "bytesSent": 300,
+        "deliveredToMe": 0,
+        "duplicatesRejected": 0,
+        "expired": 5,
+        "framesReceived": 3,
+        "inetExecuted": 0,
+        "packetsForwarded": 0,
+        "packetsOriginated": 0,
+        "sendFailures": 0,
+        "ttlExhausted": 0
+      },
+      "tracked": [
+        {
+          "confirmedBy": [],
+          "createdAt": 1791309022760,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "805ff3c3-c1b8-426b-9b25-17bc97d52765",
+          "preview": "HTTP_GET https:/google.com",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791309001117,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "0147a4db-160c-4cdf-82b3-9fdd142e1653",
+          "preview": "HTTP_GET https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current_weather=true",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308865549,
+          "deliveredRoute": [],
+          "destination": "*",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "SOS",
+          "oneWayMs": null,
+          "packetId": "44405226-fd49-4962-97da-d341d0794028",
+          "preview": "MEDICAL",
+          "priority": "CRITICAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "IN_TRANSIT",
+          "type": "SOS"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308782507,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "e3e1a37c-571f-4e47-87e4-58cb93166a27",
+          "preview": "HTTP_GET https://example.com/",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308664088,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "914d2498-c634-47b9-a529-deb6455040c0",
+          "preview": "HTTP_GET https://example.com/",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308651692,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "a0ea4374-1383-4fda-97b4-ad20b9c38469",
+          "preview": "HTTP_GET https://example.com/",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308617705,
+          "deliveredRoute": [],
+          "destination": "C-507b",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "COORDINATION",
+          "oneWayMs": null,
+          "packetId": "7c397038-3bf7-421d-a7f9-752efdcfad3f",
+          "preview": "Meet me at Gate C",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "TEXT"
+        }
+      ],
+      "transfers": []
+    },
+    "ok": true,
+    "deviceTime": 1791311399468,
+    "nodeId": "A-fbd6",
+    "peerFilter": [
+      "B"
+    ],
+    "internetValidated": true,
+    "gatewayActive": false,
+    "running": true,
+    "snapshot": {
+      "edges": [
+        {
+          "first": "A-fbd6",
+          "second": "B-e84d"
+        },
+        {
+          "first": "B-e84d",
+          "second": "C-507b"
+        }
+      ],
+      "gateways": [
+        {
+          "expiresAt": 1791311488061,
+          "gatewayId": "C-507b",
+          "hopDistance": 2,
+          "lastSeen": 1791311398061,
+          "viaPeer": "B-e84d"
+        }
+      ],
+      "inbox": [],
+      "inet": [],
+      "isGateway": false,
+      "knownNodes": [
+        "B-e84d",
+        "C-507b",
+        "A-fbd6"
+      ],
+      "metrics": [],
+      "peers": [
+        {
+          "bytesSent": 300,
+          "connectedAt": 1791311388407,
+          "endpointId": "L8Q3",
+          "framesSent": 2,
+          "nodeId": "B-e84d",
+          "queued": 0
+        }
+      ],
+      "queued": [
+        {
+          "ageMs": 2532686,
+          "destinationId": "*",
+          "hops": 0,
+          "packetId": "44405226-fd49-4962-97da-d341d0794028",
+          "priority": "CRITICAL",
+          "sourceId": "A-fbd6",
+          "state": "FORWARDING",
+          "ttl": 8,
+          "type": "SOS"
+        }
+      ],
+      "selfId": "A-fbd6",
+      "stats": {
+        "acksReceived": 0,
+        "beaconsReceived": 1,
+        "bytesReceived": 416,
+        "bytesSent": 300,
+        "deliveredToMe": 0,
+        "duplicatesRejected": 0,
+        "expired": 5,
+        "framesReceived": 3,
+        "inetExecuted": 0,
+        "packetsForwarded": 0,
+        "packetsOriginated": 0,
+        "sendFailures": 0,
+        "ttlExhausted": 0
+      },
+      "tracked": [
+        {
+          "confirmedBy": [],
+          "createdAt": 1791309022760,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "805ff3c3-c1b8-426b-9b25-17bc97d52765",
+          "preview": "HTTP_GET https:/google.com",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791309001117,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "0147a4db-160c-4cdf-82b3-9fdd142e1653",
+          "preview": "HTTP_GET https://api.open-meteo.com/v1/forecast?latitude=12.97&longitude=77.59&current_weather=true",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308865549,
+          "deliveredRoute": [],
+          "destination": "*",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "SOS",
+          "oneWayMs": null,
+          "packetId": "44405226-fd49-4962-97da-d341d0794028",
+          "preview": "MEDICAL",
+          "priority": "CRITICAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "IN_TRANSIT",
+          "type": "SOS"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308782507,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "e3e1a37c-571f-4e47-87e4-58cb93166a27",
+          "preview": "HTTP_GET https://example.com/",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308664088,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "914d2498-c634-47b9-a529-deb6455040c0",
+          "preview": "HTTP_GET https://example.com/",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308651692,
+          "deliveredRoute": [],
+          "destination": "@gateway",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "INTERNET",
+          "oneWayMs": null,
+          "packetId": "a0ea4374-1383-4fda-97b4-ad20b9c38469",
+          "preview": "HTTP_GET https://example.com/",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "INET_REQUEST"
+        },
+        {
+          "confirmedBy": [],
+          "createdAt": 1791308617705,
+          "deliveredRoute": [],
+          "destination": "C-507b",
+          "firstHops": [],
+          "hopCount": 0,
+          "label": "COORDINATION",
+          "oneWayMs": null,
+          "packetId": "7c397038-3bf7-421d-a7f9-752efdcfad3f",
+          "preview": "Meet me at Gate C",
+          "priority": "NORMAL",
+          "reasons": [
+            "restored"
+          ],
+          "rttMs": null,
+          "status": "DELIVERED",
+          "type": "TEXT"
+        }
+      ],
+      "transfers": []
+    },
+    "logs": [
+      {
+        "category": "INFO",
+        "message": "router A-fbd6 started: restored 25 packets (6 pending), 11 acked ids",
+        "packetId": null,
+        "time": 1791311348184
+      },
+      {
+        "category": "INFO",
+        "message": "mesh started as A-fbd6 (Nearby dev.meshmind.mesh.v1, P2P_CLUSTER)",
+        "packetId": null,
+        "time": 1791311348192
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: advertising as A-fbd6",
+        "packetId": null,
+        "time": 1791311350253
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: discovery started",
+        "packetId": null,
+        "time": 1791311350299
+      },
+      {
+        "category": "EXPIRY",
+        "message": "expired ACK 84744a8f A-fbd6->C-507b after 2609s",
+        "packetId": "84744a8f-71b9-4df2-aff5-6b7df0d11e47",
+        "time": 1791311358202
+      },
+      {
+        "category": "EXPIRY",
+        "message": "expired ACK b6caa65b A-fbd6->C-507b after 2609s",
+        "packetId": "b6caa65b-6a0c-453a-9c89-db035fd4bd4a",
+        "time": 1791311358205
+      },
+      {
+        "category": "EXPIRY",
+        "message": "expired ACK 005ba5ff A-fbd6->C-507b after 2575s",
+        "packetId": "005ba5ff-8360-4d61-8964-717a0296aacd",
+        "time": 1791311358208
+      },
+      {
+        "category": "EXPIRY",
+        "message": "expired ACK c7002ee7 A-fbd6->C-507b after 2355s",
+        "packetId": "c7002ee7-a617-4d43-a64e-66f4727f197b",
+        "time": 1791311358211
+      },
+      {
+        "category": "EXPIRY",
+        "message": "expired ACK cf4aeecc A-fbd6->C-507b after 2335s",
+        "packetId": "cf4aeecc-c18c-4012-9067-f68122964585",
+        "time": 1791311358212
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: discovered B-e84d (L8Q3)",
+        "packetId": null,
+        "time": 1791311386274
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: connection initiated with B-e84d (outgoing)",
+        "packetId": null,
+        "time": 1791311388331
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: connection requested to B-e84d",
+        "packetId": null,
+        "time": 1791311388332
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: CONNECTED to B-e84d (L8Q3)",
+        "packetId": null,
+        "time": 1791311388406
+      },
+      {
+        "category": "PEER",
+        "message": "link up: endpoint L8Q3 (sending HELLO)",
+        "packetId": null,
+        "time": 1791311388410
+      },
+      {
+        "category": "PEER",
+        "message": "handshake: endpoint L8Q3 is node B-e84d; sending SUMMARY (1 held, 11 acked)",
+        "packetId": null,
+        "time": 1791311388445
+      },
+      {
+        "category": "QUEUE",
+        "message": "SUMMARY from B-e84d: holds 1, acked 11 (0 new); requesting 0 missing",
+        "packetId": null,
+        "time": 1791311388532
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: discovered C-507b (H7QN)",
+        "packetId": null,
+        "time": 1791311397450
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: not linking to C-507b (topology lock)",
+        "packetId": null,
+        "time": 1791311397451
+      },
+      {
+        "category": "RX",
+        "message": "rx GATEWAY_BEACON 62e1a30c NORMAL C-507b→* ttl=6 hops=2 route=C-507b→B-e84d→A-fbd6 from B-e84d",
+        "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+        "time": 1791311398059
+      },
+      {
+        "category": "BEACON",
+        "message": "gateway C-507b at 2 hop(s) via B-e84d",
+        "packetId": "62e1a30c-ed9e-433c-a929-7570a3a4c6a7",
+        "time": 1791311398062
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: not linking to C-507b (topology lock)",
+        "packetId": null,
+        "time": 1791311398205
+      }
+    ],
+    "hostBeginMs": 1791311398832.8943,
+    "hostEndMs": 1791311399200.21,
+    "clockOffsetEstimateMs": 451.44775390625,
+    "clockOffsetUncertaintyMs": 183.6578369140625,
+    "command": "snapshot",
+    "extras": {},
+    "role": "A",
+    "rawFile": "raw/be9bfeaa7a1ee41718a1b63ae54323795_A_snapshot.json"
+  },
+  "direct_link_rejection_evidence": {
+    "A": [
+      {
+        "category": "PEER",
+        "message": "nearby: not linking to C-507b (topology lock)",
+        "packetId": null,
+        "time": 1791311397451
+      },
+      {
+        "category": "PEER",
+        "message": "nearby: not linking to C-507b (topology lock)",
+        "packetId": null,
+        "time": 1791311398205
+      }
+    ],
+    "C": [
+      {
+        "category": "PEER",
+        "message": "nearby: not linking to A-fbd6 (topology lock)",
+        "packetId": null,
+        "time": 1791311397509
+      }
+    ]
+  },
+  "preflight_passed": true,
+  "execution_adjustments": {
+    "discovery": {
+      "original_planned": 20,
+      "effective_total_attempts": 8,
+      "cold_valid_target": 5,
+      "reason": "Warm restart after bulk matrix caused C Room-load OOM at 256 MiB heap; responsibly reduced restart repetitions and use fresh app processes without changing radios or deleting data"
+    },
+    "relay_recovery": {
+      "planned": 20,
+      "restart_mode": "cold B process, app data preserved, Wi-Fi unchanged",
+      "effective_total_attempts": 10,
+      "reason": "User explicitly capped relay recovery at 10 attempts on 2026-10-07; all failures retained.",
+      "user_requested_cap": 10
+    }
+  }
+}

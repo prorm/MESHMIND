@@ -1,0 +1,9 @@
+.venv/
+.python/
+.tools/
+.cache/
+__pycache__/
+.pytest_cache/
+data/raw/
+data/processed/
+outputs/

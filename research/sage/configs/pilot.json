@@ -1,0 +1,27 @@
+{
+  "max_nodes": 100,
+  "trace_seconds": 14400,
+  "train_domains": ["school", "workplace"],
+  "validation_domain": "hypertext",
+  "test_domain": "sfhh",
+  "label_seeds": [11, 12],
+  "evaluation_seeds": [31, 32, 33],
+  "label_limit_per_run": 1600,
+  "epochs": 25,
+  "batch_size": 128,
+  "base": {"packets": 120, "lifetime": 1800},
+  "scenarios": {
+    "low_load": {"packets": 60},
+    "heavy_load": {"packets": 240},
+    "low_adoption": {"adoption": 0.5},
+    "sparse": {"contact_keep": 0.4},
+    "unstable_gateway": {"gateway_uptime": 0.3, "gateway_period": 120},
+    "media_burst": {"media_fraction": 0.7, "critical_burst": 20},
+    "queue_saturation": {"packets": 240, "queue_bytes": 32768},
+    "partition_reconnect": {"partition_start": 1200, "partition_end": 6000},
+    "gateway_disappearance": {"gateway_disappear": 3600},
+    "high_churn": {"node_uptime": 0.5},
+    "more_gateways": {"gateway_count": 5},
+    "short_lifetime": {"lifetime": 600}
+  }
+}

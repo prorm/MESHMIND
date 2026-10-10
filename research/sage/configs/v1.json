@@ -1,0 +1,390 @@
+{
+  "seed": 2026,
+  "traces": [
+    "hypertext",
+    "sfhh",
+    "school",
+    "highschool2011",
+    "highschool2012",
+    "primaryschool",
+    "workplace",
+    "workplace2015",
+    "hospital",
+    "infectious",
+    "copenhagen"
+  ],
+  "min_active_nodes": 30,
+  "min_hours": 4.0,
+  "splits": {
+    "train": [
+      "school",
+      "highschool2011",
+      "highschool2012",
+      "primaryschool",
+      "workplace",
+      "workplace2015",
+      "hospital",
+      "copenhagen:0-17",
+      "infectious:0-44"
+    ],
+    "validation": [
+      "hypertext",
+      "copenhagen:18-21",
+      "infectious:45-54"
+    ],
+    "test": [
+      "sfhh",
+      "copenhagen:22-27",
+      "infectious:55-68"
+    ]
+  },
+  "label_runs_per_episode": {
+    "train": 4,
+    "validation": 2,
+    "test": 1
+  },
+  "label_log_rate": 0.25,
+  "label_cap_per_run": 4000,
+  "behavior_policies": [
+    {
+      "kind": "epidemic"
+    },
+    {
+      "kind": "spray_focus",
+      "copies": 16
+    },
+    {
+      "kind": "prophet",
+      "speed": 1
+    },
+    {
+      "kind": "epidemic"
+    }
+  ],
+  "label_scenario_space": {
+    "rate_per_node_hour": [
+      0.5,
+      1.0,
+      2.0,
+      4.0
+    ],
+    "lifetime": [
+      3600.0,
+      7200.0,
+      10800.0
+    ],
+    "queue_bytes": [
+      65536,
+      262144,
+      1048576
+    ],
+    "node_bps": [
+      4096.0,
+      8192.0,
+      32768.0
+    ],
+    "traffic_gateway": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "social": [
+      0.2,
+      0.6,
+      0.9
+    ],
+    "adoption": [
+      0.5,
+      1.0,
+      1.0
+    ],
+    "media_fraction": [
+      0.1,
+      0.2,
+      0.5
+    ],
+    "gateway_share": [
+      0.01,
+      0.03,
+      0.1
+    ],
+    "gateway_uptime": [
+      0.5,
+      0.9
+    ],
+    "contact_keep": [
+      0.5,
+      1.0,
+      1.0
+    ],
+    "node_uptime": [
+      0.7,
+      1.0,
+      1.0
+    ],
+    "loss": [
+      0.0,
+      0.05,
+      0.15
+    ],
+    "max_packets": 1500
+  },
+  "epochs": 40,
+  "batch_size": 2048,
+  "eval_base": {
+    "rate_per_node_hour": 1.0,
+    "lifetime": 7200.0,
+    "queue_bytes": 262144,
+    "node_bps": 4096.0,
+    "max_packets": 1500
+  },
+  "eval_scenarios": {
+    "base": {},
+    "low_load": {
+      "rate_per_node_hour": 0.5
+    },
+    "heavy_load": {
+      "rate_per_node_hour": 4.0
+    },
+    "media_burst": {
+      "media_fraction": 0.6,
+      "critical_burst": 30
+    },
+    "queue_saturation": {
+      "queue_bytes": 65536,
+      "rate_per_node_hour": 3.0
+    },
+    "low_adoption": {
+      "adoption": 0.5
+    },
+    "sparse_contacts": {
+      "contact_keep": 0.4
+    },
+    "unstable_gateways": {
+      "gateway_uptime": 0.3,
+      "gateway_period": 120.0
+    },
+    "gateway_disappearance": {
+      "gateway_disappear_frac": 0.5
+    },
+    "more_gateways": {
+      "gateway_share": 0.1
+    },
+    "partition_reconnect": {
+      "partition": [
+        0.25,
+        0.6
+      ]
+    },
+    "high_churn": {
+      "node_uptime": 0.5
+    },
+    "short_lifetime": {
+      "lifetime": 1800.0
+    },
+    "long_lifetime": {
+      "lifetime": 14400.0
+    },
+    "uniform_traffic": {
+      "social": 0.0
+    },
+    "gateway_heavy": {
+      "traffic_gateway": 0.7
+    },
+    "no_ack_gossip": {
+      "ack_gossip": false
+    }
+  },
+  "tuning_scenarios": [
+    "base",
+    "heavy_load",
+    "queue_saturation",
+    "sparse_contacts"
+  ],
+  "tuning_seeds": [
+    7
+  ],
+  "test_seeds": [
+    31
+  ],
+  "fixed_policies": [
+    {
+      "kind": "direct"
+    },
+    {
+      "kind": "epidemic"
+    },
+    {
+      "kind": "heuristic"
+    }
+  ],
+  "tuning_candidates": {
+    "spray_wait": [
+      {
+        "kind": "spray_wait",
+        "copies": 4
+      },
+      {
+        "kind": "spray_wait",
+        "copies": 8
+      },
+      {
+        "kind": "spray_wait",
+        "copies": 16
+      },
+      {
+        "kind": "spray_wait",
+        "copies": 32
+      }
+    ],
+    "spray_focus": [
+      {
+        "kind": "spray_focus",
+        "copies": 4
+      },
+      {
+        "kind": "spray_focus",
+        "copies": 8
+      },
+      {
+        "kind": "spray_focus",
+        "copies": 16
+      },
+      {
+        "kind": "spray_focus",
+        "copies": 32
+      }
+    ],
+    "prophet": [
+      {
+        "kind": "prophet",
+        "speed": 0
+      },
+      {
+        "kind": "prophet",
+        "speed": 1
+      }
+    ],
+    "prophet_value": [
+      {
+        "kind": "prophet_value",
+        "speed": 1,
+        "threshold": -1.0
+      },
+      {
+        "kind": "prophet_value",
+        "speed": 1,
+        "threshold": -0.05
+      },
+      {
+        "kind": "prophet_value",
+        "speed": 1,
+        "threshold": 0.0
+      },
+      {
+        "kind": "prophet_value",
+        "speed": 0,
+        "threshold": -0.05
+      },
+      {
+        "kind": "prophet_value",
+        "speed": 0,
+        "threshold": 0.0
+      }
+    ],
+    "sage": [
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": -1.0
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.0
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.002
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.005
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.01
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.02
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.05
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.1
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": -1.0,
+        "per_byte": true
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.005,
+        "per_byte": true
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_net.pt",
+        "threshold": 0.02,
+        "per_byte": true
+      }
+    ],
+    "sage_tree": [
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_tree.pkl",
+        "threshold": -1.0
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_tree.pkl",
+        "threshold": 0.0
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_tree.pkl",
+        "threshold": 0.005
+      },
+      {
+        "kind": "sage",
+        "model": "outputs/v1/checkpoints/sage_tree.pkl",
+        "threshold": 0.02
+      }
+    ]
+  },
+  "ceiling_sample": 600,
+  "test_core_scenarios": [
+    "base",
+    "low_load",
+    "heavy_load",
+    "queue_saturation",
+    "media_burst"
+  ],
+  "test_core_seeds": [
+    31,
+    32
+  ]
+}

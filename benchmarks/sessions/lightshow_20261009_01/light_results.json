@@ -1,0 +1,245 @@
+[
+  {
+    "check": "phones on Light Show screen (A, C)",
+    "ok": true
+  },
+  {
+    "check": "host schedules show",
+    "ok": true,
+    "showId": "34b78edf-b845-45f4-accd-78b7af45331d"
+  },
+  {
+    "check": "C sees the offer over 2 hops",
+    "ok": true,
+    "host_observed_ms": 408
+  },
+  {
+    "check": "C joins via UI and synchronizes",
+    "ok": true,
+    "via": "UI",
+    "sync_ms": 1000,
+    "clock": {
+      "measuredAt": 334977903,
+      "offsetMs": -154046736,
+      "roundTripMs": 280
+    }
+  },
+  {
+    "check": "host counts C as ready",
+    "ok": true,
+    "readyCount": 1,
+    "participants": [
+      {
+        "lastSeen": 180932075,
+        "nodeId": "C-507b",
+        "revision": 0,
+        "roundTripMs": 131,
+        "seat": {
+          "group": 0,
+          "x": 500,
+          "y": 500
+        }
+      }
+    ]
+  },
+  {
+    "check": "B relays without playing",
+    "ok": true,
+    "b_show": null
+  },
+  {
+    "check": "C clock offset matches reference (|error| bound < 50 ms)",
+    "ok": true,
+    "app_offset_ms": -154046816,
+    "reference_interval_ms": [
+      -154046898.2,
+      -154046749.7
+    ],
+    "error_interval_ms": [
+      -66.3,
+      82.2
+    ],
+    "sync_rtt_ms": 86,
+    "adb_min_rtt_ms": [
+      64.5,
+      70.2
+    ]
+  },
+  {
+    "check": "full screen opened on A and C",
+    "ok": true
+  },
+  {
+    "check": "screens render the host timeline (A and C)",
+    "ok": true,
+    "captures": [
+      {
+        "role": "A",
+        "rgb": [
+          135,
+          211,
+          109
+        ],
+        "window_ms": 374,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "C",
+        "rgb": [
+          121,
+          212,
+          112
+        ],
+        "window_ms": 458,
+        "min_channel_diff": 1,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "A",
+        "rgb": [
+          55,
+          215,
+          199
+        ],
+        "window_ms": 256,
+        "min_channel_diff": 1,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "C",
+        "rgb": [
+          59,
+          206,
+          206
+        ],
+        "window_ms": 406,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "A",
+        "rgb": [
+          110,
+          143,
+          250
+        ],
+        "window_ms": 273,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "C",
+        "rgb": [
+          113,
+          142,
+          250
+        ],
+        "window_ms": 308,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "A",
+        "rgb": [
+          203,
+          119,
+          215
+        ],
+        "window_ms": 261,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "C",
+        "rgb": [
+          204,
+          119,
+          214
+        ],
+        "window_ms": 317,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "A",
+        "rgb": [
+          246,
+          115,
+          125
+        ],
+        "window_ms": 221,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "C",
+        "rgb": [
+          248,
+          114,
+          112
+        ],
+        "window_ms": 379,
+        "min_channel_diff": 1,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "A",
+        "rgb": [
+          255,
+          170,
+          80
+        ],
+        "window_ms": 266,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      },
+      {
+        "role": "C",
+        "rgb": [
+          255,
+          172,
+          80
+        ],
+        "window_ms": 328,
+        "min_channel_diff": 0,
+        "phase_outside_window_ms": 0
+      }
+    ]
+  },
+  {
+    "check": "late joiner B enters current phase",
+    "ok": true,
+    "position_ms": 26346
+  },
+  {
+    "check": "B stays out after leaving (adverts do not rejoin)",
+    "ok": true
+  },
+  {
+    "check": "host Stop ends C's show",
+    "ok": true,
+    "via": "UI",
+    "stop_ms": 3730,
+    "note": "The host stopped this show."
+  },
+  {
+    "check": "C synchronized before isolation",
+    "ok": true
+  },
+  {
+    "check": "isolated C keeps playing after unreachable stop",
+    "ok": false,
+    "position_ms": -2216,
+    "color": [
+      11,
+      18,
+      20
+    ]
+  },
+  {
+    "check": "isolated C ends at the scheduled duration",
+    "ok": true,
+    "note": "Show finished. Choose another show or host your own."
+  }
+]

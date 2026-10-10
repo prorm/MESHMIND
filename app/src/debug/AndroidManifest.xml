@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:networkSecurityConfig="@xml/network_security_config_debug">
+        <!-- Shell-only benchmark control. Never packaged in release builds. -->
+        <receiver android:name="dev.meshmind.app.benchmark.BenchmarkReceiver"
+            android:exported="true" android:permission="android.permission.DUMP" />
+    </application>
+</manifest>

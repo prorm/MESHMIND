@@ -1,0 +1,13 @@
+benchmark,outage_duration_ms,attempts,successes,failures,success_rate_pct,system_failures,infrastructure_failures,latency_ms_n,latency_ms_mean,latency_ms_std,latency_ms_min,latency_ms_max,latency_ms_p50,latency_ms_p90,latency_ms_p95,latency_ms_p99,recovery_latency_ms_n,recovery_latency_ms_mean,recovery_latency_ms_std,recovery_latency_ms_min,recovery_latency_ms_max,recovery_latency_ms_p50,recovery_latency_ms_p90,recovery_latency_ms_p95,recovery_latency_ms_p99,http_duration_ms_n,http_duration_ms_mean,http_duration_ms_std,http_duration_ms_min,http_duration_ms_max,http_duration_ms_p50,http_duration_ms_p90,http_duration_ms_p95,http_duration_ms_p99
+text,,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+internet,,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+store_forward,5000,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+store_forward,10000,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+store_forward,20000,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+store_forward,30000,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+sos_idle,,20,20,0,100.0,0,0,20,338.95,291.7134681498268,110,1242,187.5,733.7,867.7,1167.14,0,,,,,,,,,0,,,,,,,,
+sos_low,,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+sos_medium,,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+sos_high,,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+discovery,,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,
+relay_recovery,,0,0,0,,0,0,0,,,,,,,,,0,,,,,,,,,0,,,,,,,,

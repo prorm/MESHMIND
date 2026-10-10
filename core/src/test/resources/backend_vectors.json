@@ -1,0 +1,61 @@
+{
+ "authorityKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEi4/jKL/oy6q/JBtr+3BEHrcLaL37+o4ZbapY4dgKD+ezDB74hgakrkJC30BDvSaXJyZZ7TE+TTcvul04cGeRVA==",
+ "certificate": {
+  "nodeId": "Riya-1a2b",
+  "publicKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEIzAvfFPlupoq+4IgQJ2VBkax9/EJuHMv72rfw4v1klg6sSEoWMEvEaThlD/35y2ePDLBue02A0oIFgq/yev/Sg==",
+  "role": "ORGANIZER",
+  "phoneVerified": true,
+  "issuedAt": 1760000000000,
+  "expiresAt": 1791536000000,
+  "issuer": "ed34d732840d629f",
+  "signature": "MEYCIQCI4SMHMub+gC6Od5RyRZ6wBsw2pobcw9ZfEqd45i6rHAIhAO/ahspbh5IFnG+dp5s26Giluog/nrGIKQBTRbfMgBNp"
+ },
+ "answer": {
+  "kind": "ASK",
+  "query": "Is the metro running?",
+  "text": "Yes — Line 2 every 8 min. Ünïcödé ✓",
+  "sources": [
+   {
+    "title": "BMRCL",
+    "url": "https://example.com/metro"
+   },
+   {
+    "title": "News",
+    "url": "https://example.com/n"
+   }
+  ],
+  "createdAt": 1760000000000,
+  "expiresAt": 1760001800000,
+  "provider": "claude-opus-5-5",
+  "keyId": "ed34d732840d629f",
+  "signature": "MEYCIQDajMtZyamLnz3AZAhzrEmHNFfIOncfPKiOfcamFXUP6AIhAPTP9RNgmRYEx2voj/ltuHxMqrX8U/9HAbVb3q7/9Zdp"
+ },
+ "bulletin": {
+  "boardId": "official",
+  "title": "Live info · Bengaluru",
+  "seq": 7,
+  "issuedAt": 1760000000000,
+  "items": [
+   {
+    "kind": "ALERT",
+    "severity": 2,
+    "title": "Gate B closed",
+    "body": "Use Gates A or C.",
+    "source": "Event organizer",
+    "issuedAt": 1760000000000,
+    "expiresAt": 1760003600000
+   },
+   {
+    "kind": "WEATHER",
+    "severity": 0,
+    "title": "27°C, clear sky",
+    "body": "Wind 5 km/h.",
+    "source": "Open-Meteo",
+    "issuedAt": 1760000000000,
+    "expiresAt": 1760005400000
+   }
+  ],
+  "keyId": "ed34d732840d629f",
+  "signature": "MEYCIQDDB/n115gn/2WztJTSmUiRUit6xY9tW/L55aPCDN+m5gIhAP6+olmicY93aFK8rhkQgpyDj4TvCdnclJRp1rQF+UH3"
+ }
+}

@@ -1,0 +1,18 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+captures/
+backend/.venv/
+backend/data/
+__pycache__/
+.env
+*.env.local
+tmp/
+*.apk
+# Raw phone captures are multi-GB; reports, plots and metadata are kept
+benchmarks/sessions/*/raw/
+benchmarks/sessions/*/parsed/
+benchmarks/.matplotlib/
