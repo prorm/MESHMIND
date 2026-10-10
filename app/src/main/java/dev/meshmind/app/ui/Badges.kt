@@ -76,7 +76,8 @@ fun BulletinItemCard(item: BulletinItem, board: BulletinView, now: Long) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     when {
                         board.official -> Pill("✓ Official", MeshColors.ok)
-                        board.viaGateway -> Pill("via gateway ${board.from.substringBefore('/')}", MeshColors.gateway)
+                        board.viaGateway || board.bulletin.boardId.endsWith("/weather") ->
+                            Pill("via gateway ${board.bulletin.boardId.substringBefore('/')}", MeshColors.gateway)
                         else -> Pill("✓ ${board.signerRole.name.lowercase()} · ${board.bulletin.boardId}", MeshColors.ok)
                     }
                     Text("${item.source} · ${ago(now - item.issuedAt)}", style = MaterialTheme.typography.labelSmall, color = MeshColors.muted)

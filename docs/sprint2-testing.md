@@ -39,6 +39,14 @@ What is **not** verified yet:
 | SOS ACK RTT with signed packets (5 runs) | p50 **156–158 ms** (Sprint 1 unsigned: 172–208 ms), all received as VERIFIED |
 | Trust rejections during normal use | 0 |
 
+**No-server run (same day, laptop backend switched off):** the Realme gateway called Gemini, the reader and Open-Meteo itself.
+
+| Test | Result |
+|---|---|
+| Ask from the offline OnePlus | ✓ "Signed by verified gateway B-e84d", 1.1–1.9 s round trip, Emergency 95/100 |
+| Read (Wikipedia, MG Road) | ✓ signed by the gateway, 6 KB of text, 1.4 s |
+| Weather on the live-info board | On A as "Weather via B-e84d" (Open-Meteo, fetched by the gateway) |
+
 **Fixed during the run:**
 - A user's refused notice showed on their own screen with a "✓ user" badge. Notices are now refused on the posting phone too.
 - "Where is the nearest hospital" and "nearest hospital" now share a cache entry ("where" added to the stop words on phone and backend).
