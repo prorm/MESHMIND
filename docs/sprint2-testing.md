@@ -36,7 +36,7 @@ What is **not** verified yet:
 | Notice from A (plain user) | Refused on A itself and never shown on B (after the fix below) |
 | Fair share (budget 2/min, 6 mixed questions) | Once the budget ran out, the queue came back Health 85 → Safety 80 → Transport 60 → Leisure 20; the 2 questions that arrived before the queue formed went straight through |
 | Per-phone abuse cap | A's 7th+ request within a minute was rejected with "rate limit: max 6/min per requester" |
-| SOS ACK RTT with signed packets (5 runs) | p50 **156–158 ms** (Sprint 1 unsigned: 172–208 ms), all received as VERIFIED |
+| SOS ACK RTT with signed packets (5 runs, twice) | p50 **156–158 ms** over one hop, all received as VERIFIED (Sprint 1's 172–208 ms came from a different setup, so the two are not directly comparable) |
 | Trust rejections during normal use | 0 |
 
 **No-server run (same day, laptop backend switched off):** the Realme gateway called Gemini, the reader and Open-Meteo itself.

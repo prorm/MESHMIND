@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>MeshMind — Pitch Brochure v5 · Conductor</title>
+<title>MeshMind — Pitch Brochure v5 · Conductor + Ask</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=block" rel="stylesheet">
@@ -94,6 +94,7 @@ td b { font-weight: 600; }
 .ladder .s::after { content: ""; position: absolute; top: 1.7mm; left: 50%; width: 100%; height: 1.4px; background: currentColor; opacity: .5; }
 .ladder .s:last-child::after { display: none; }
 svg text { font-family: var(--mono); }
+.tight td { padding: 1.5mm 3mm 1.5mm 0; }
 @media screen { .page { margin: 0 auto 10px; box-shadow: 0 2px 18px rgba(0,0,0,.35); } }
 </style>
 </head>
@@ -103,7 +104,7 @@ svg text { font-family: var(--mono); }
 <section class="page dark" id="p1" style="padding:0">
   <svg id="cover-net" viewBox="0 0 794 700" style="position:absolute;top:0;left:0;width:210mm;height:185mm"></svg>
   <div style="position:absolute;top:15mm;left:15mm;right:15mm;display:flex;justify-content:space-between;font:500 8.5px var(--mono);letter-spacing:.18em;opacity:.62">
-    <span>STARTUP PITCH BROCHURE · V5 · THE CONDUCTOR EDITION</span><span>BENGALURU · OCTOBER 2026</span></div>
+    <span>STARTUP PITCH BROCHURE · V5 · CONDUCTOR + ASK EDITION</span><span>BENGALURU · OCTOBER 2026</span></div>
   <div style="margin-top:auto;padding:0 15mm 14mm">
     <div style="font:700 15px var(--mono);letter-spacing:.35em;color:var(--lime);margin-bottom:6mm">MESHMIND</div>
     <div style="font:600 60px/0.98 var(--sans);letter-spacing:-.045em;margin-bottom:7mm">When the network fails,<br><span class="serif" style="color:var(--lime)">the crowd</span> becomes<br>the network — <span class="serif" style="color:var(--lime)">and the<br>network starts thinking.</span></div>
@@ -135,7 +136,7 @@ svg text { font-family: var(--mono); }
       <p>11 public human-contact traces, 145 independent episodes, 1,001,442 routing decisions labelled by a temporal oracle. On held-out events SAGE identifies which copies actually improve delivery with AUC 0.81; every hand-written rule we tested scores 0.53–0.58. In routing it beat flooding in all 17 held-out stress scenarios.</p>
     </div>
   </div>
-  <div class="grid g4" style="margin-bottom:5mm">
+  <div class="grid g4" style="margin-bottom:3mm">
     <div class="card" style="padding:3.5mm 4mm"><div class="stat">11</div><div class="statlab">public contact traces · 4 → 11</div></div>
     <div class="card"><div class="stat">800<small>×</small></div><div class="statlab">more labelled decisions than the v0 pilot</div></div>
     <div class="card"><div class="stat">15<small>k</small></div><div class="statlab">parameters · 75 KB ONNX model</div></div>
@@ -146,7 +147,7 @@ svg text { font-family: var(--mono); }
     <p class="small" style="color:var(--ink-2)">Our first SAGE pilot "lost" to flooding: 3.3% vs 5.2% delivery. Instead of tuning the model, we measured the benchmark. Even a router with perfect knowledge of the future could only reach 5–12% in that setup — flooding was already at the ceiling. No model could have won. We rebuilt the benchmark so that a perfect router reaches 33–69%, added delivery-ACK gossip, shared radio airtime and real crowd traces, then retrained.</p>
     <div class="callout">The lesson is the moat: we test whether a test can be won before we celebrate or panic about a result. Investors and organisers get numbers with their ceilings attached.</div>
   </div>
-  <div class="rule"></div>
+  <div class="rule" style="margin:2.5mm 0"></div>
   <div class="kicker">New in v3 — the ambition</div>
   <div class="grid g4" style="gap:2.5mm">
     <div class="card" style="padding:3mm 3.5mm"><h3>Autonomic Mesh</h3><p>SAGE runs seven network decisions, not one</p></div>
@@ -166,7 +167,7 @@ svg text { font-family: var(--mono); }
   <div class="top"><span>MeshMind</span><span>01 / The pitch in 90 seconds</span></div>
   <div class="tag"><span class="n">01</span> The pitch in 90 seconds</div>
   <h1 style="font-size:50px">20,000 phones.<br>One metre apart.<br><em>Now they think together.</em></h1>
-  <p class="lede">A dense crowd is the largest computer most people will ever stand inside: thousands of radios, accelerometers, microphones, barometers and batteries within arm's reach. Today each phone fights alone for a congested tower. When the tower fails, the event goes blind — exactly when someone needs help and someone else needs to take responsibility for helping.</p>
+  <p class="lede">A dense crowd is the largest computer most people will ever stand inside: thousands of radios, accelerometers, barometers and batteries within arm's reach. Today each phone fights alone for a congested tower. When the tower fails, the event goes blind — exactly when someone needs help and someone else needs to take responsibility for helping.</p>
   <div class="card ink" style="padding:6mm;margin-bottom:6mm">
     <div class="kicker" style="color:var(--lime)">Product definition · v3</div>
     <div style="font:500 19px/1.35 var(--sans)">MeshMind is the <span class="serif" style="color:var(--lime);font-size:22px">nervous system</span> of a crowd: a mesh that routes itself, phones that sense together, and a response loop that does not stop at "delivered" — it stops at "resolved".</div>
@@ -184,7 +185,7 @@ svg text { font-family: var(--mono); }
         <li>A system where a model can demote, delay or suppress an explicit SOS — tested adversarially</li>
         <li>A crush-prediction product. Crowd sensing is evidence for trained humans</li>
         <li>A certified life-safety system — it is decision support for trained teams</li>
-        <li>An Internet proxy: gateways run allowlisted requests only</li>
+        <li>An open Internet proxy: gateways answer questions and fetch readable pages, signed; raw requests stay allowlisted</li>
       </ul>
     </div>
     <div>
@@ -201,13 +202,13 @@ svg text { font-family: var(--mono); }
   <div class="tag"><span class="n">02</span> The problem</div>
   <h1>In a crush, <em>nobody can type.</em><br>In a blackout, <em>nobody can see.</em></h1>
   <p class="lede">Dense events fail in two ways at once. Communication collapses — and the physical state of the crowd becomes hardest to see. Most mesh messengers assume a human typing a message to a friend. In a crush, people cannot raise their arms; people pushing from behind have no idea anything is wrong; the control room sees a wall of silence and reads it as calm.</p>
-  <div class="grid g3" style="border-top:1.5px solid var(--ink);border-bottom:1px solid var(--line);padding:5mm 0;margin-bottom:6mm;gap:0">
+  <div class="grid g3" style="border-top:1.5px solid var(--ink);border-bottom:1px solid var(--line);padding:4mm 0;margin-bottom:4mm;gap:0">
     <div style="padding-right:5mm;border-right:1px solid var(--line)"><div class="statlab" style="margin:0 0 2mm">Hathras · Jul 2024</div><div class="num" style="color:var(--orange)">121</div><div class="statlab">deaths · ~250k at a gathering permitted for 80k</div></div>
     <div style="padding:0 5mm;border-right:1px solid var(--line)"><div class="statlab" style="margin:0 0 2mm">Maha Kumbh · Jan 2025</div><div class="num">30</div><div class="statlab">deaths · 60 injured in the official count</div></div>
     <div style="padding-left:5mm"><div class="statlab" style="margin:0 0 2mm">Bengaluru · Jun 2025</div><div class="num">11</div><div class="statlab">deaths · 47 injured near Chinnaswamy stadium</div></div>
   </div>
   <h2>Where today's tools break</h2>
-  <table>
+  <table class="tight">
     <thead><tr><th style="width:30%">Today</th><th style="width:30%">Failure mode</th><th>MeshMind v3</th></tr></thead>
     <tbody>
       <tr><td>Every phone reaches alone for the tower</td><td>Congestion → apps stall</td><td><b>Cooperative local overlay that routes itself</b></td></tr>
@@ -242,7 +243,7 @@ svg text { font-family: var(--mono); }
       <div class="card" style="border-left:4px solid var(--orange)"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">04 · Memory — the incident op-log</h3><span class="chip c-build">Building</span></div><p style="margin-top:1.5mm">Signed, hash-chained, causally merged operation log; conflicts preserved for humans; the event's Black Box for inquiries and insurers</p></div>
       <div class="card" style="border-left:4px solid var(--sky)"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">03 · Senses — Crowd Pulse</h3><span class="chip c-research">Research</span></div><p style="margin-top:1.5mm">On-device features from BLE scans, IMU, barometer and sound level — density trends, motion coherence, falls, floors. Raw signals never leave the phone</p></div>
       <div class="card" style="border-left:4px solid var(--lime)"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">02 · Reflexes — SAGE, the autonomic mesh</h3><span class="chip c-sim">Proven in sim</span></div><p style="margin-top:1.5mm">Learned relay value, scheduling and eviction today; gateway forecasting, radio duty-cycling and topology sculpting next — all beneath fixed safety rules</p></div>
-      <div class="card" style="border-left:4px solid #fff"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">01 · Nerves — the mesh</h3><span class="chip c-live">Live on phones</span></div><p style="margin-top:1.5mm">Nearby Connections transport · store-and-forward · ACKs · chunking with receiver-confirmed backpressure · SOS pre-emption · Internet via consenting gateway · 3-phone multi-hop</p></div>
+      <div class="card" style="border-left:4px solid #fff"><div style="display:flex;justify-content:space-between;align-items:center"><h3 style="margin:0">01 · Nerves — the mesh</h3><span class="chip c-live">Live on phones</span></div><p style="margin-top:1.5mm">Nearby Connections transport · store-and-forward · ACKs · chunking with receiver-confirmed backpressure · SOS pre-emption · signed packets · Ask &amp; Read via a consenting gateway with a need-aware queue · 3-phone multi-hop</p></div>
     </div>
     <div class="card li" style="display:flex;flex-direction:column;gap:6mm">
       <div><div class="kicker" style="color:var(--ink)">Safety envelope</div><div style="font:600 15px/1.3 var(--sans)">AI proposes. Deterministic rules dispose.</div></div>
@@ -371,6 +372,113 @@ on enqueue(p):
   <div class="foot"><span>Session physical_20261006_01 (OnePlus 12R → Realme RMX5108 → Galaxy S24 Ultra, Android 16). Software-enforced A↔B↔C topology, one room; Nearby chose the bearer (Wi-Fi stayed on for B and C). Not RF-isolated, not Bluetooth-only, not event scale.</span><b>8</b></div>
 </section>
 
+<!-- ============================== N1 ASK THROUGH THE MESH ============================== -->
+<section class="page dark" id="p-ask">
+  <div class="top"><span>MeshMind</span><span>New in this edition / Ask through the mesh</span></div>
+  <div class="tag"><span class="n">N1</span> Internet for a crowd · no server needed</div>
+  <h1>One phone has Internet.<br><em>Everyone gets answers.</em></h1>
+  <p class="lede">Phones with no signal ask questions and read pages through any consenting phone that still has Internet. That gateway asks the AI itself, signs the answer with its own key, and every phone the answer passes remembers it — so the hundredth person asking "is the metro running?" is answered by a neighbour, not by the Internet.</p>
+  <div class="grid g4" style="border-top:1px solid #2a2e35;border-bottom:1px solid #2a2e35;padding:5mm 0;margin-bottom:6mm">
+    <div><div class="stat" style="color:var(--lime)">1.4<small>s</small></div><div class="statlab">signed answer to an<br>airplane-mode phone · 1.1–2.0 s</div></div>
+    <div><div class="stat">0<small>ms</small></div><div class="statlab">same question again —<br>answered on the phone itself</div></div>
+    <div><div class="stat">6<small>KB</small></div><div class="statlab">a web page as readable<br>text · 0.9–1.4 s</div></div>
+    <div><div class="stat">0</div><div class="statlab">servers or laptops<br>required</div></div>
+  </div>
+  <svg viewBox="0 0 700 150" style="width:100%;height:auto;margin-bottom:5mm">
+    <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#c8f23d"/></marker>
+      <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#7cc3ff"/></marker></defs>
+    <text x="0" y="12" font-size="9" fill="#8d8b85" letter-spacing="2">MEASURED · 10 OCT 2026 · LAPTOP BACKEND SWITCHED OFF</text>
+    <rect x="0" y="30" width="165" height="66" rx="8" fill="none" stroke="#ff5424" stroke-width="1.6"/><text x="82" y="56" text-anchor="middle" font-size="12.5" fill="#f4f2ec" font-weight="700">OnePlus 12R</text><text x="82" y="74" text-anchor="middle" font-size="8.5" fill="#ff5424">AIRPLANE MODE · BT ONLY</text><text x="82" y="88" text-anchor="middle" font-size="8.5" fill="#a7a59e">asks · caches</text>
+    <rect x="265" y="30" width="170" height="66" rx="8" fill="none" stroke="#c8f23d" stroke-width="1.6"/><text x="350" y="56" text-anchor="middle" font-size="12.5" fill="#f4f2ec" font-weight="700">Realme · gateway</text><text x="350" y="74" text-anchor="middle" font-size="8.5" fill="#c8f23d">FAIR-SHARE QUEUE · SIGNS</text><text x="350" y="88" text-anchor="middle" font-size="8.5" fill="#a7a59e">reader · weather · cache</text>
+    <rect x="535" y="30" width="165" height="66" rx="8" fill="none" stroke="#7cc3ff" stroke-width="1.6"/><text x="617" y="56" text-anchor="middle" font-size="12.5" fill="#f4f2ec" font-weight="700">Gemini · Open-Meteo</text><text x="617" y="74" text-anchor="middle" font-size="8.5" fill="#7cc3ff">HTTPS · KEY STAYS ON G</text><text x="617" y="88" text-anchor="middle" font-size="8.5" fill="#a7a59e">3.5 Flash-Lite · free tier</text>
+    <line x1="170" y1="52" x2="258" y2="52" stroke="#c8f23d" stroke-width="1.6" marker-end="url(#ar2)"/><text x="214" y="45" text-anchor="middle" font-size="8.5" fill="#8d8b85">QUESTION</text>
+    <line x1="258" y1="76" x2="172" y2="76" stroke="#c8f23d" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#ar2)"/><text x="214" y="90" text-anchor="middle" font-size="8.5" fill="#c8f23d">SIGNED ANSWER</text>
+    <line x1="440" y1="52" x2="528" y2="52" stroke="#7cc3ff" stroke-width="1.6" marker-end="url(#ar3)"/>
+    <line x1="528" y1="76" x2="442" y2="76" stroke="#7cc3ff" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#ar3)"/>
+    <text x="350" y="122" text-anchor="middle" font-size="9" fill="#a7a59e">Only the gateway ever holds the API key · relays see the question and a signed answer they can verify and cache</text>
+    <text x="350" y="140" text-anchor="middle" font-size="9" fill="#c8f23d">1,000 PEOPLE ASKING THE SAME THING = 1 INTERNET CALL</text>
+  </svg>
+  <table style="margin-bottom:5mm">
+    <thead><tr><th style="width:21%">Piece</th><th>What it does</th><th style="width:20%">Status</th></tr></thead>
+    <tbody>
+      <tr><td><b>Ask</b></td><td>The question crosses the mesh to the best gateway (verified first, least loaded); the AI answers in at most 80 words with sources; the gateway signs it</td><td><span class="chip c-live">Live · 2 phones</span></td></tr>
+      <tr><td><b>Read</b></td><td>Tap a source: the gateway fetches the page, strips scripts and navigation, and returns about 6 KB of signed plain text</td><td><span class="chip c-live">Live · 2 phones</span></td></tr>
+      <tr><td><b>Cache everywhere</b></td><td>Every phone keeps answers whose signature checks out; a relay answers a repeat question itself and the gateway is never asked</td><td><span class="chip c-live">Live · own phone</span></td></tr>
+      <tr><td><b>No invented facts</b></td><td>Without live web search the model must say it cannot check live status — we caught it claiming "running normally today" and fixed it</td><td><span class="chip c-live">Fixed on phones</span></td></tr>
+      <tr><td><b>Optional server</b></td><td>Adds phone verification, organizer roles and official alerts, and keeps AI keys off phones for public release</td><td><span class="chip c-build">Built · optional</span></td></tr>
+    </tbody>
+  </table>
+  <div class="card li"><div class="kicker" style="color:var(--ink)">Why answers, not a tunnel</div><p>A Bluetooth mesh moves about 100 KB/s, shared by everyone nearby. One Instagram Reel would hold the link for a minute; a signed answer is under 1 KB. MeshMind carries the thing people actually need from the Internet in a crisis — information — not the apps that need gigabytes.</p></div>
+  <div class="foot"><span>Phone run 10 Oct 2026: OnePlus 12R (airplane mode, Bluetooth only) asking through a Realme RMX5108 gateway on Wi-Fi, laptop backend switched off. Free-tier Gemini key: Google Search grounding is unavailable, so answers are marked "no web search".</span><b>9</b></div>
+</section>
+
+<!-- ============================== N2 FAIR SHARE ============================== -->
+<section class="page cream" id="p-fair">
+  <div class="top"><span>MeshMind</span><span>New in this edition / The need-aware gateway</span></div>
+  <div class="tag"><span class="n">N2</span> AI that shares one link with a crowd</div>
+  <h1>One link, a thousand askers.<br><em>The most urgent goes first.</em></h1>
+  <p class="lede">A gateway phone is a scarce resource: every question and answer squeezes through it and its neighbours. MeshMind's gateway scores every request itself — it ignores the priority the sender claims — and shares its link by need, without starving anyone and without ever slowing an SOS.</p>
+  <div class="card ink" style="padding:5mm 6mm;margin-bottom:6mm;text-align:center">
+    <div class="kicker" style="color:var(--lime)">Place in line</div>
+    <div style="font:500 14px/1.5 var(--mono);white-space:nowrap">need × 100 &nbsp;+&nbsp; waiting bonus &nbsp;−&nbsp; fair-share penalty &nbsp;&nbsp;·&nbsp;&nbsp; <span style="color:var(--lime)">SOS skips the line</span></div>
+  </div>
+  <div class="grid" style="grid-template-columns:1.25fr 1fr;gap:6mm;margin-bottom:6mm">
+    <div>
+      <div class="kicker">Measured on phones · 6 questions · budget 2/min</div>
+      <div style="display:flex;flex-direction:column;gap:2.4mm;margin-top:2mm">
+        <div><div style="display:flex;justify-content:space-between;font:600 11px var(--sans)"><span>"my friend fainted, where is first aid"</span><span>Health 85</span></div><div style="height:7px;border-radius:4px;background:var(--line)"><div style="width:85%;height:7px;border-radius:4px;background:var(--orange)"></div></div><div class="statlab" style="margin-top:1mm">served 1st once the queue formed · waited 58 s</div></div>
+        <div><div style="display:flex;justify-content:space-between;font:600 11px var(--sans)"><span>"which exit gates are open"</span><span>Safety 80</span></div><div style="height:7px;border-radius:4px;background:var(--line)"><div style="width:80%;height:7px;border-radius:4px;background:var(--amber)"></div></div><div class="statlab" style="margin-top:1mm">2nd · waited 59 s</div></div>
+        <div><div style="display:flex;justify-content:space-between;font:600 11px var(--sans)"><span>"is the metro running"</span><span>Transport 60</span></div><div style="height:7px;border-radius:4px;background:var(--line)"><div style="width:60%;height:7px;border-radius:4px;background:#2c6fc4"></div></div><div class="statlab" style="margin-top:1mm">3rd · waited 118 s</div></div>
+        <div><div style="display:flex;justify-content:space-between;font:600 11px var(--sans)"><span>"movie times tonight"</span><span>Leisure 20</span></div><div style="height:7px;border-radius:4px;background:var(--line)"><div style="width:20%;height:7px;border-radius:4px;background:var(--ink-3)"></div></div><div class="statlab" style="margin-top:1mm">last · waited 120 s — slower, never dropped</div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:3mm">
+      <div class="card or"><div class="kicker" style="color:var(--ink)">Crying wolf costs you</div><p>Two "urgent" claims per phone per 10 minutes. In the attacker test, the third to fifth fake emergencies were treated as normal and an honest first-aid question overtook them.</p></div>
+      <div class="card"><div class="kicker">It explains itself</div><p>Every answer carries "Why this priority?": the topic it detected, a recent SOS from that phone, a low battery, how long it waited, and the fair-share penalty.</p></div>
+    </div>
+  </div>
+  <div class="grid g4" style="margin-bottom:6mm">
+    <div class="card"><h3>Scores the question</h3><p>Topic, context and fairness — never who the person is.</p></div>
+    <div class="card"><h3>Nobody starves</h3><p>Waiting adds up to 60 points; full queues defer the least urgent with a clear message.</p></div>
+    <div class="card"><h3>Crowds spread out</h3><p>Gateways announce their load; phones pick the calmer one, even a hop further.</p></div>
+    <div class="card ink"><h3 style="color:var(--lime)">SOS untouched</h3><p>SOS webhook posts skip the queue and the budget entirely.</p></div>
+  </div>
+  <div class="callout"><b>A crowd sensor for free.</b> The gateway sees what people need — Health, Safety, Transport — per 10 minutes, as categories only. Five safety questions from one area in ten minutes is a signal an organiser should see before anyone presses SOS.</div>
+  <div class="foot"><span>Phone run 10 Oct 2026, OnePlus 12R → Realme RMX5108; the gateway budget was lowered to 2 requests/min so a queue could form (the first two questions arrived before it did and went straight through). Ordering, urgent allowance, SOS bypass, ageing and overflow are also covered by JVM tests.</span><b>10</b></div>
+</section>
+
+<!-- ============================== N3 TRUST ============================== -->
+<section class="page dark" id="p-trust">
+  <div class="top"><span>MeshMind</span><span>New in this edition / Trust by design</span></div>
+  <div class="tag"><span class="n">N3</span> Accountable, not anonymous</div>
+  <h1>Every message signed.<br><em>Nobody can speak for you.</em></h1>
+  <p class="lede">On 3 October 2026 Bitchat was removed from Indian app stores under a government order; reporting cites tracing and lawful-interception concerns about its anonymous design. MeshMind takes the opposite position: safety infrastructure organisers and police can stand behind, while users keep their numbers private.</p>
+  <div class="grid g3" style="margin-bottom:4mm">
+    <div class="card"><div class="kicker">Signed</div><h3>Every packet and handshake</h3><p>ECDSA P-256 on every message, delivery receipt, gateway beacon and answer. Each carries its sender's certificate, so any phone can check it offline.</p></div>
+    <div class="card"><div class="kicker">Verified</div><h3>A phone number, once</h3><p>An OTP turns a self-signed identity into a ✓. The certificate carries only the name and the ✓; the number stays on the MeshMind server for accountability.</p></div>
+    <div class="card li"><div class="kicker" style="color:var(--ink)">Never blocked</div><h3>SOS always works</h3><p>Unverified phones can still send SOS; it is delivered and marked unverified. Safety beats bureaucracy.</p></div>
+  </div>
+  <table class="tight" style="margin-bottom:4mm">
+    <thead><tr><th style="width:34%">Attack in a crowd</th><th>What happens</th><th style="width:19%">Evidence</th></tr></thead>
+    <tbody>
+      <tr><td>Change a message on the way ("Gate C" → "Gate F")</td><td>Dropped at the next hop; the original still arrives</td><td><span class="chip c-sim">JVM test</span></td></tr>
+      <tr><td>Send an SOS in someone else's name</td><td>Rejected: the certificate or the remembered key doesn't match</td><td><span class="chip c-sim">JVM test</span></td></tr>
+      <tr><td>Fake "delivered" receipt to stop an SOS spreading</td><td>Ignored: only the real recipient can acknowledge, and SOS ignores unsigned gossip</td><td><span class="chip c-sim">JVM test</span></td></tr>
+      <tr><td>Rush a forged copy ahead of the real one</td><td>The forgery is refused and the genuine packet is still accepted</td><td><span class="chip c-sim">JVM test</span></td></tr>
+      <tr><td>Broadcast "evacuate now" from an ordinary phone</td><td>Refused on the sender's own phone and never shown to anyone; only verified organisers and responders can post notices</td><td><span class="chip c-live">Live · 2 phones</span></td></tr>
+      <tr><td>Alter an AI answer, or poison a phone's cache</td><td>Signature fails: shown as unverified and never cached</td><td><span class="chip c-sim">JVM test</span></td></tr>
+    </tbody>
+  </table>
+  <div class="grid g4" style="margin-bottom:3mm">
+    <div class="card"><div class="stat" style="color:var(--lime)">156<small>ms</small></div><div class="statlab">SOS round trip with signatures · p50 · 1 hop · 10/10</div></div>
+    <div class="card"><div class="stat">0</div><div class="statlab">genuine packets refused during the phone run</div></div>
+    <div class="card"><div class="stat">84</div><div class="statlab">JVM tests incl. 8 attack scenarios</div></div>
+    <div class="card"><div class="stat">✓</div><div class="statlab">Python server ↔ phone signatures verified byte for byte</div></div>
+  </div>
+  <div class="callout">For counsel, not for us alone: end-to-end encryption of private messages with originator tracing, log retention, and gateways during lawful shutdowns.</div>
+  <div class="foot"><span>Bitchat facts from Alt News, Outlook India and Storyboard18 reporting, Oct 2026; the order's detailed grounds were not published. This page describes design choices, not a legal or compliance certification.</span><b>11</b></div>
+</section>
+
 <!-- ============================== 08 SAGE LAB ============================== -->
 <section class="page cream" id="p8">
   <div class="top"><span>MeshMind</span><span>05 / SAGE · what the lab proved</span></div>
@@ -414,7 +522,7 @@ on enqueue(p):
     <div class="kicker">Routing result on held-out events · the honest version</div>
     <p id="sage-routing-text">484 paired runs on 22 unseen episodes. <b>Max-delivery SAGE beat bounded flooding in all 17 stress scenarios: 40.8% vs 40.3% delivery</b> (+0.54 pts, 95% CI +0.44 to +0.65) at the same airtime, reaching 94.7% of the perfect-knowledge ceiling. <b>Eco SAGE matched flooding's delivery with 28% less airtime</b> (−0.11 pts, not significant), 28% fewer transmissions and a 191 s lower p95 latency. At low budgets it ties Spray-and-Focus. SOS outcomes were identical in every run. Gains are real but small; the airtime saving is the practical win.</p>
   </div>
-  <div class="foot"><span>AUC = probability a truly useful copy is ranked above a useless one; 0.5 is chance. Test split: SFHH conference, the last 6 days of the Copenhagen study, the last 14 days of the Infectious exhibition. CC BY-NC-SA / CC0 / MIT data licences apply.</span><b>9</b></div>
+  <div class="foot"><span>AUC = probability a truly useful copy is ranked above a useless one; 0.5 is chance. Test split: SFHH conference, the last 6 days of the Copenhagen study, the last 14 days of the Infectious exhibition. CC BY-NC-SA / CC0 / MIT data licences apply.</span><b>12</b></div>
 </section>
 
 
@@ -447,7 +555,7 @@ on enqueue(p):
     <div class="card li"><div class="kicker" style="color:var(--ink)">SAGE v2 research plan</div><ul class="list" style="font-size:10.2px"><li style="color:#1d1d1b">Train on SAGE's own decisions (on-policy relabelling)</li><li style="color:#1d1d1b">Labels that account for packet loss and radio contention</li><li style="color:#1d1d1b">A calibrated "safe to skip" probability with conformal thresholds</li><li style="color:#1d1d1b">Calibrate airtime and contact length from phone telemetry</li></ul></div>
     <div class="card ink" style="background:#1b1f25"><div class="kicker">The pitch line</div><div style="font:500 15px/1.4 var(--sans)">"SAGE already routes about as well as perfect foresight allows. Our next target is doing it with 3–4× less battery and airtime — the thing that decides whether a mesh survives a whole festival."</div></div>
   </div>
-  <div class="foot"><span>Headroom diagnostic: 162 runs on 6 validation Infectious days × {base, heavy load, queue saturation}; "perfect foresight" uses the offline oracle and ignores losses and contention, so real savings will be smaller. SAGE eco's 72% is the 484-run held-out test average.</span><b>10</b></div>
+  <div class="foot"><span>Headroom diagnostic: 162 runs on 6 validation Infectious days × {base, heavy load, queue saturation}; "perfect foresight" uses the offline oracle and ignores losses and contention, so real savings will be smaller. SAGE eco's 72% is the 484-run held-out test average.</span><b>13</b></div>
 </section>
 
 <!-- ============================== 09 AUTONOMIC MESH ============================== -->
@@ -474,7 +582,7 @@ on enqueue(p):
     <div class="card"><div class="kicker">Ship safe</div><p>Shadow mode first: the phone logs what SAGE would do while the deterministic router stays in charge.</p></div>
   </div>
   <div class="card li"><div class="grid" style="grid-template-columns:1fr 2fr;gap:5mm;align-items:center"><div style="font:600 17px/1.25 var(--sans)">Federated SAGE</div><p>Every event teaches the next one. Phones compute model updates from consented telemetry; only aggregated weights leave the venue — never messages, contacts or locations. A model that has seen a hundred festivals is a moat no newcomer can download. <span class="chip" style="color:var(--ink)">Vision</span></p></div></div>
-  <div class="foot"><span>Knobs 01–03 are implemented and evaluated in held-out simulation (research/sage/v1). Nothing here is wired into the Android router yet; integration starts in shadow mode.</span><b>11</b></div>
+  <div class="foot"><span>Knobs 01–03 are implemented and evaluated in held-out simulation (research/sage/v1). Nothing here is wired into the Android router yet; integration starts in shadow mode.</span><b>14</b></div>
 </section>
 
 <!-- ============================== 10 MESH TWIN ============================== -->
@@ -499,7 +607,7 @@ on enqueue(p):
     <div class="card ink" style="background:#1b1f25"><div class="kicker">What makes it possible</div><p>The pieces already exist in the lab: a validated temporal oracle, a replay simulator, a leakage-tested history state and a learned reachability model (AUC 0.84 for "will this phone deliver?"). The twin points them at live telemetry instead of public traces.</p></div>
     <div class="card" style="border:1px solid var(--lime)"><div class="kicker">Honesty rules</div><ul class="list"><li>Forecasts are shown as ranges with their own measured accuracy</li><li>Stale data makes a zone grey, never green</li><li>Humans approve every movement; recommendations that fail are logged</li></ul></div>
   </div>
-  <div class="foot"><span>Status: RESEARCH → BUILDING. The reactive version (Reconnect a Zone) is in the 30-day plan; the predictive twin follows once field telemetry calibrates the simulator. Illustrative visual, not measured data.</span><b>12</b></div>
+  <div class="foot"><span>Status: RESEARCH → BUILDING. The reactive version (Reconnect a Zone) is in the 30-day plan; the predictive twin follows once field telemetry calibrates the simulator. Illustrative visual, not measured data.</span><b>15</b></div>
 </section>
 
 <!-- ============================== 11 CROWD PULSE ============================== -->
@@ -507,7 +615,7 @@ on enqueue(p):
   <div class="top"><span>MeshMind</span><span>08 / Crowd Pulse · phones as sensors</span></div>
   <div class="tag"><span class="n">08</span> Crowd Pulse</div>
   <h1>Every phone is a sensor.<br><em>The crowd is the instrument.</em></h1>
-  <p class="lede">Cameras watch from fixed points. Twenty thousand phones are already inside the crowd, with radios, motion sensors, barometers and microphones. With consent, MeshMind turns them into a distributed instrument — computing features on the device, sending only tiny summaries, and showing uncertainty instead of verdicts.</p>
+  <p class="lede">Cameras watch from fixed points. Twenty thousand phones are already inside the crowd, with radios, motion sensors and barometers. With consent, MeshMind turns them into a distributed instrument — computing features on the device, sending only tiny summaries, and showing uncertainty instead of verdicts.</p>
   <table style="margin-bottom:5mm">
     <thead><tr><th style="width:17%">Signal</th><th style="width:20%">Sensor</th><th>What it can honestly tell us</th><th style="width:15%">Status</th></tr></thead>
     <tbody>
@@ -515,7 +623,6 @@ on enqueue(p):
       <tr><td><b>Motion coherence</b></td><td>Accelerometer + gyroscope</td><td>Whether nearby phones move together, stop-and-go, or turbulently — ambiguous alone (a dancing crowd also moves together)</td><td><span class="chip c-research">Research</span></td></tr>
       <tr><td><b>Fall + stillness</b></td><td>IMU impact + posture</td><td>A possible fall followed by no movement → opt-in Silent SOS candidate, confirmed or cancelled by the user</td><td><span class="chip c-next">Next</span></td></tr>
       <tr><td><b>Floor level</b></td><td>Barometer</td><td>Which level of a stand or building a report came from (relative pressure). Not body compression</td><td><span class="chip c-next">Next</span></td></tr>
-      <tr><td><b>Loudness</b></td><td>Microphone, dB only</td><td>Sound-level trend per zone. Audio is never recorded, stored or transmitted</td><td><span class="chip c-research">Research</span></td></tr>
       <tr><td><b>Zone</b></td><td>Relay-Kit beacons + Wi-Fi</td><td>Coarse "which zone am I in" without GPS, from known checkpoint beacons</td><td><span class="chip c-next">Next</span></td></tr>
       <tr><td><b>Device health</b></td><td>Battery, thermal, screen</td><td>Which relays will die soon — direct input to SAGE and the Mesh Twin</td><td><span class="chip c-build">Building</span></td></tr>
     </tbody>
@@ -534,7 +641,7 @@ on enqueue(p):
     </div>
     <div class="card" style="border:1.5px solid var(--orange)"><div class="kicker">Privacy contract</div><ul class="list" style="font-size:10px"><li>Opt-in, visible, and only while Event Mode is on</li><li>Features computed on the phone; raw sensor data never leaves it</li><li>Rotating pseudonymous IDs; no names, numbers or precise tracks</li><li>Aggregates per zone, with a minimum crowd size before display</li></ul></div>
   </div>
-  <div class="foot"><span>Any operational safety claim requires calibration against video / UWB ground truth with published false-positive and false-negative rates. Crowd Pulse produces evidence for trained staff, not automatic instructions to the crowd.</span><b>13</b></div>
+  <div class="foot"><span>Any operational safety claim requires calibration against video / UWB ground truth with published false-positive and false-negative rates. Crowd Pulse produces evidence for trained staff, not automatic instructions to the crowd.</span><b>16</b></div>
 </section>
 
 <!-- ============================== 12 SIGNATURE LAYER ============================== -->
@@ -553,7 +660,7 @@ on enqueue(p):
     <div class="card ink"><div class="kicker" style="color:var(--sky)">S5 · New</div><h3 style="font-size:16px">Silent SOS</h3><p>Help without typing or speaking</p></div>
     <div class="card ink"><div class="kicker" style="color:var(--sky)">S6 · New</div><h3 style="font-size:16px">Swarm Relays</h3><p>Idle phones volunteer to heal the mesh</p></div>
   </div>
-  <div class="foot" style="opacity:.8"><span>+ Attendee layer: Rendezvous Plan · Bhasha SOS · MeshReach · Last-Seen Trail. Research: SurgeWatch · Scenario Rehearsal.</span><b>14</b></div>
+  <div class="foot" style="opacity:.8"><span>+ New: Ask through the mesh · need-aware gateway · signed identity. Attendee layer: Rendezvous Plan · MeshReach · Last-Seen Trail. Research: SurgeWatch · Scenario Rehearsal.</span><b>17</b></div>
 </section>
 
 <!-- ============================== 13 S1 + S2 ============================== -->
@@ -589,7 +696,7 @@ on enqueue(p):
       </ul>
     </div>
   </div>
-  <div class="foot"><span>Status: BUILDING (30-day plan). Proof: the record survives a defined restart/reconnect suite; targeted questions resolve a staged incident faster with fewer notifications than broadcasting.</span><b>15</b></div>
+  <div class="foot"><span>Status: BUILDING (30-day plan). Proof: the record survives a defined restart/reconnect suite; targeted questions resolve a staged incident faster with fewer notifications than broadcasting.</span><b>18</b></div>
 </section>
 
 <!-- ============================== 14 S3 + S6 ============================== -->
@@ -615,10 +722,10 @@ on enqueue(p):
     <p class="small" style="color:#bdbab2">When SAGE sees a bridge forming — a phone with high battery, a charger, and contact with two otherwise separate groups — it can ask that attendee, once, to keep MeshMind awake as a relay for the next 30 minutes. Consent is explicit, the battery cost is shown up front, and the reward is visible: "you carried 41 messages tonight, including 2 SOS". Staff phones are always relays; attendee relays are a gift, never an assumption.</p>
     <ul class="list"><li>Asked only where the twin predicts real value</li><li>Battery floor and time limit chosen by the user</li><li>Relay credits: festival perks, recognition, priority rendezvous</li><li>Never extends what a relay can read: relays forward ciphertext</li></ul>
   </div>
-  <div class="foot"><span>Status: S3 reactive version BUILDING; predictive pre-connect RESEARCH; Swarm Relays NEXT; Sky Relay VISION. Human approval always precedes physical movement.</span><b>16</b></div>
+  <div class="foot"><span>Status: S3 reactive version BUILDING; predictive pre-connect RESEARCH; Swarm Relays NEXT; Sky Relay VISION. Human approval always precedes physical movement.</span><b>19</b></div>
 </section>
 
-<!-- ============================== 15 SILENT + BHASHA SOS ============================== -->
+
 
 <!-- ============================== LIGHT SHOW ============================== -->
 <section class="page dark" id="p-light-show">
@@ -657,28 +764,28 @@ on enqueue(p):
     <div><h2>Cues travel ahead.</h2><p class="small" style="color:#c9c6be">Beat-aligned scenes have a three-second distribution lead. Small revisioned scores travel ahead; clock probes align the timeline and each phone renders locally. Late joiners recover the active and pending cues.</p><p class="small" style="color:#c9c6be">The console shows recent sync and cue receipts. Phone positions are assigned, not sensed. SOS remains above show traffic; remote scenes and stops need a connected route.</p></div>
   </div>
   <div class="card li" style="padding:5mm"><h3>Built now. Measure next.</h3><p>Core tests cover timing, spatial effects, group targeting, blackout revisions, late joins and SOS under load. Browser checks use a labelled simulated mesh. USB on Android, physical screen alignment and crowd scale still need device testing. No flashlight control.</p></div>
-  <div class="foot"><span>October 2026 implementation. The paired USB console can keep the host conducting in the background; participants opt into screen playback. The 64-slot roster is a software bound, not a proven crowd capacity.</span><b>17</b></div>
+  <div class="foot"><span>October 2026 implementation. The paired USB console can keep the host conducting in the background; participants opt into screen playback. The 64-slot roster is a software bound, not a proven crowd capacity.</span><b>20</b></div>
 </section>
 
 <section class="page cream" id="p15">
   <div class="top"><span>MeshMind</span><span>09 / Signature S5 · SOS for people who cannot type</span></div>
-  <div class="tag"><span class="n">S5</span> Silent SOS + Bhasha SOS</div>
+  <div class="tag"><span class="n">S5</span> Silent SOS</div>
   <h1>No typing. No speaking.<br><em>Still heard.</em></h1>
-  <p class="lede">In a crush you cannot raise your arms; in panic you cannot type; in a crowd of twelve languages the medic may not read yours. MeshMind gives the SOS three entrances — and every one of them leaves on the deterministic critical path within milliseconds, before any AI enrichment.</p>
+  <p class="lede">In a crush you cannot raise your arms; in panic you cannot type; in a concert nobody can hear you. MeshMind gives the SOS three silent entrances — and every one of them leaves on the deterministic critical path within milliseconds, signed, before any AI enrichment.</p>
   <div class="grid g3" style="margin-bottom:6mm">
     <div class="card ink"><div class="kicker" style="color:var(--lime)">Entrance 1 · Pattern</div><h3 style="font-size:17px">Press, don't look</h3><p>Five presses of the power button or a held volume-key pattern sends a basic SOS with zone and time. Works with the screen off, in a pocket.</p></div>
     <div class="card ink"><div class="kicker" style="color:var(--lime)">Entrance 2 · Body</div><h3 style="font-size:17px">Fall + stillness</h3><p>Opt-in: an impact followed by no movement starts a 20-second countdown the user can cancel; otherwise an SOS leaves with the motion evidence attached.</p></div>
-    <div class="card ink"><div class="kicker" style="color:var(--lime)">Entrance 3 · Voice</div><h3 style="font-size:17px">Bhasha SOS</h3><p>Speak in Kannada; the medic reads Hindi. On-device transcription → a tiny structured packet that renders in the responder's language.</p></div>
+    <div class="card ink"><div class="kicker" style="color:var(--lime)">Entrance 3 · One tap</div><h3 style="font-size:17px">Category buttons</h3><p>MEDICAL, FIRE, LOST, TRAPPED: one tap sends a signed, labelled SOS to every phone in range, ahead of all other traffic. Live on phones today.</p></div>
   </div>
-  <div class="code" style="margin-bottom:5mm;font-size:10.5px">"ಅಮ್ಮ ಬಿದ್ದಿದ್ದಾರೆ, ಉಸಿರಾಡ್ತಿಲ್ಲ"  →  { type: MEDICAL, sev: CRITICAL, people: 1,
-                                 sym: [collapse, NOT breathing], zone: Gate C,
-                                 floor: +1 (barometer), conf: 0.82 }  →  medic (hi)</div>
+  <div class="code" style="margin-bottom:5mm;font-size:10.5px">tap MEDICAL  →  { type: SOS, prio: CRITICAL, kind: MEDICAL, zone: Gate C,
+                  floor: +1 (barometer), from: Asha-1f2e ✓, sig: ECDSA }
+              →  every phone in range, ahead of all other traffic · 156 ms p50 · 1 hop</div>
   <div class="grid g2" style="margin-bottom:5mm">
-    <div><h3>Built for negation</h3><p class="small" style="color:var(--ink-2)">"Not breathing", "not injured" and "no longer blocked" must stay distinguishable. The evaluation set is built around negation, code-switching and vague locations; native speakers verify; real recordings and speakers stay separate between training and evaluation.</p></div>
+    <div><h3>Signed, and never blocked</h3><p class="small" style="color:var(--ink-2)">Every SOS is signed, so nobody can fake one in your name and nobody can silence yours with a forged "delivered" receipt. An unverified phone's SOS is still delivered — marked unverified — because safety comes before identity.</p></div>
     <div><h3>Order of operations</h3><ol class="small" style="color:var(--ink-2);margin:0;padding-left:5mm"><li>Basic SOS leaves instantly — deterministic, CRITICAL</li><li>Enrichment packets follow: category, severity, floor, language</li><li>AI may <b>raise</b> priority or link reports; it never lowers, delays or merges away an explicit SOS</li><li>False-trigger rate is measured and published per entrance</li></ol></div>
   </div>
   <div class="callout">Accessibility is safety: the same entrances serve people who are deaf, non-verbal, injured, or simply holding a child with both hands.</div>
-  <div class="foot"><span>Status: Bhasha SOS KEEP (two tested languages first). Pattern SOS NEXT. Fall + stillness RESEARCH → NEXT after false-alarm measurement on target phones.</span><b>18</b></div>
+  <div class="foot"><span>Status: one-tap category SOS LIVE (signed, 156 ms p50 over one hop). Pattern SOS NEXT. Fall + stillness RESEARCH → NEXT after false-alarm measurement on target phones. No microphone input: concerts are too loud for voice to be useful.</span><b>21</b></div>
 </section>
 
 <!-- ============================== 16 ATTENDEE LAYER ============================== -->
@@ -701,11 +808,11 @@ on enqueue(p):
     </div>
     <div style="display:grid;grid-template-columns:22mm 1fr;gap:4mm;border-top:1px solid var(--line);padding-top:4mm">
       <div class="num" style="color:var(--orange);font-size:52px">A4</div>
-      <div><h2 style="font-size:17px">Verified alerts — the organiser speaks, the mesh carries it, nobody can fake it</h2><p class="small" style="color:var(--ink-2)">Signed with event authority keys and rendered in the attendee's language. Fake "stampede!" messages are the most dangerous rumours in a crowd; unsigned alerts are visibly marked as unverified and never get the critical path.</p><span class="pill">Ed25519 authority keys</span><span class="pill">Multilingual</span><span class="pill">Rumour-resistant</span></div>
+      <div><h2 style="font-size:17px">Verified alerts — the organiser speaks, the mesh carries it, nobody can fake it</h2><p class="small" style="color:var(--ink-2)">Only phones verified as organisers or responders can broadcast notices; the live-info board also carries signed weather and official alerts. On phones, an ordinary user's fake "evacuate now" was refused on their own phone and never reached anyone. Fake "stampede!" messages are the most dangerous rumours in a crowd.</p><span class="pill">Signed (ECDSA P-256)</span><span class="pill">Organiser role</span><span class="pill">Rumour-resistant</span><span class="chip c-live">Live · 2 phones</span></div>
     </div>
   </div>
   <div class="card ink" style="margin-top:5mm"><div class="grid" style="grid-template-columns:1fr 1fr;gap:5mm"><div><div class="kicker" style="color:var(--lime)">Escape paths from the local mesh</div><p><b style="color:#fff">Internet gateway</b> — validated, including two hops away. <b style="color:#fff">SMS gateway</b> — conditional; Play SMS-permission policy needs review.</p></div><p><b style="color:#fff">Satellite-capable phones as gateways</b> — vision: as satellite messaging reaches mainstream Android phones, any such phone in the crowd could become the event's last-resort uplink, with SAGE routing only the most critical traffic to it.</p></div></div>
-  <div class="foot"><span>Attendee participation is opt-in, permissioned and only counts while Event Mode is active. The staff network must be useful without it.</span><b>19</b></div>
+  <div class="foot"><span>Attendee participation is opt-in, permissioned and only counts while Event Mode is active. The staff network must be useful without it.</span><b>22</b></div>
 </section>
 
 <!-- ============================== 17 RESEARCH BETS ============================== -->
@@ -736,7 +843,7 @@ on enqueue(p):
       <tr><td><b>Crowd–comms co-simulation</b></td><td>Which instructions actually reach people in time to change movement?</td><td>JuPedSim × SAGE replay prototype</td></tr>
     </tbody>
   </table>
-  <div class="foot"><span>Demo SurgeWatch only with recorded motion traces or separated volunteers making ordinary movements — never a staged shove. Any operational claim needs calibration against video / UWB ground truth.</span><b>20</b></div>
+  <div class="foot"><span>Demo SurgeWatch only with recorded motion traces or separated volunteers making ordinary movements — never a staged shove. Any operational claim needs calibration against video / UWB ground truth.</span><b>23</b></div>
 </section>
 
 <!-- ============================== 18 SAFETY ============================== -->
@@ -768,12 +875,13 @@ on enqueue(p):
       <tr><td><b>Shadow before authority</b></td><td>On phones, SAGE first logs recommendations while the deterministic router decides; promotion needs a held-out win</td></tr>
       <tr><td><b>Humans move, models suggest</b></td><td>Every physical action — a steward, a Relay Kit — needs organiser approval and is logged with its outcome</td></tr>
       <tr><td><b>Unknown is not green</b></td><td>Freshness decays every observation; missing evidence renders grey on every map</td></tr>
-      <tr><td><b>Relays can't read</b></td><td>End-to-end encrypted payloads; interpretation happens only on the origin or an authorised recipient</td></tr>
+      <tr><td><b>Relays can't forge</b></td><td>Every packet, receipt and answer is signed; altered or spoofed traffic is dropped at the next hop. End-to-end encryption for private messages is next</td></tr>
+      <tr><td><b>The queue can't silence SOS</b></td><td>The gateway's need scorer only orders ordinary questions; SOS posts skip its queue and budget</td></tr>
       <tr><td><b>If ML loses, ship the baseline</b></td><td>Every learned component has a non-learning baseline that it must beat on held-out data to ship</td></tr>
     </tbody>
   </table>
-  <div class="callout">Known gap we are closing before integration: the Android router's optional NextHopAdvisor hook currently runs for CRITICAL packets too. It must gain an explicit critical bypass and a test before SAGE is attached.</div>
-  <div class="foot"><span>Safety tests live in research/sage/tests (adversarial model, fallback, eviction, leakage) and the core router's JVM test suite.</span><b>21</b></div>
+  <div class="callout">Closed since v4: the router's NextHopAdvisor hook now has an explicit critical bypass with an adversarial test. Still open: a neighbour's unsigned summary can mark ordinary packets delivered — SOS and broadcasts are already protected.</div>
+  <div class="foot"><span>Safety tests live in research/sage/tests (adversarial model, fallback, eviction, leakage) and the core router's JVM test suite.</span><b>24</b></div>
 </section>
 
 <!-- ============================== 19 ARCHITECTURE ============================== -->
@@ -783,13 +891,13 @@ on enqueue(p):
   <h1>A local mesh data plane.<br><em>An intelligence plane that learns.</em></h1>
   <div class="grid" style="grid-template-columns:1fr 1fr;gap:6mm">
     <div style="display:flex;flex-direction:column;gap:2mm">
-      <div class="card ink" style="padding:3mm 4mm"><div class="kicker" style="color:var(--lime)">Cloud (optional)</div><p>Family ingress · reachability tokens · federated SAGE aggregation · cross-event evaluation</p></div>
+      <div class="card ink" style="padding:3mm 4mm"><div class="kicker" style="color:var(--lime)">Cloud (optional)</div><p>Phone verification authority · official alerts · family ingress · federated SAGE aggregation</p></div>
       <div class="card ink" style="padding:3mm 4mm"><div class="kicker" style="color:var(--lime)">Organiser console (local)</div><p>Incident fusion · Mesh Twin · question selection · observability map · checkpoint scoring</p></div>
       <div class="card" style="padding:3mm 4mm"><div class="kicker">Incident layer</div><p>Signed op-log · causal merge · conflict surfacing · hash chain</p></div>
       <div class="card" style="padding:3mm 4mm;border:1.5px solid var(--orange)"><div class="kicker">Intelligence plane · on phone</div><p>SAGE ONNX policy (relay · schedule · evict) · Crowd Pulse features · Silent SOS detectors · report structuring · abstention</p></div>
       <div class="card" style="padding:3mm 4mm"><div class="kicker">Routing</div><p>IDs · TTL · dedupe · ACK/SUMMARY gossip · store-and-forward · bounded replication · backpressure · critical bypass</p></div>
       <div class="card" style="padding:3mm 4mm"><div class="kicker">Transport abstraction</div><p>Nearby Connections · simulation · fault injection · future Wi-Fi Aware / BLE</p></div>
-      <div class="card" style="padding:3mm 4mm;background:var(--paper-2)"><div class="kicker" style="color:var(--ink-3)">Phone radios + sensors</div><p>Bluetooth · BLE · Wi-Fi · IMU · barometer · microphone (dB only)</p></div>
+      <div class="card" style="padding:3mm 4mm;background:var(--paper-2)"><div class="kicker" style="color:var(--ink-3)">Phone radios + sensors</div><p>Bluetooth · BLE · Wi-Fi · IMU · barometer</p></div>
     </div>
     <div>
       <table style="font-size:9.6px">
@@ -801,17 +909,17 @@ on enqueue(p):
           <tr><td><b>Router core</b></td><td>Pure Kotlin/JVM; same code in phones and simulation</td></tr>
           <tr><td><b>SAGE runtime</b></td><td>ONNX Runtime Mobile or LiteRT · 59 versioned features · 15k params · shadow mode first</td></tr>
           <tr><td><b>SAGE lab</b></td><td>Python 3.11 · PyTorch (CUDA) · scikit-learn · temporal oracle · replay simulator · 11 public traces</td></tr>
-          <tr><td><b>Crypto</b></td><td>Tink / libsodium · Ed25519 · X25519 + XChaCha20-Poly1305 · Android Keystore</td></tr>
+          <tr><td><b>Crypto</b></td><td>ECDSA P-256 via JCA on every packet, handshake, certificate and answer · keys wrapped by Android Keystore · E2E encryption next</td></tr>
           <tr><td><b>Incident layer</b></td><td>Lamport / vector clocks · OR-set · multi-value register · SHA-256 chain</td></tr>
-          <tr><td><b>On-device AI</b></td><td>whisper.cpp or offline SpeechRecognizer · LiteRT classifiers · SensorManager features</td></tr>
+          <tr><td><b>Gateway AI</b></td><td>Gemini 3.5 Flash-Lite called by the gateway phone · need scorer (rules → on-device model) · page reader · Open-Meteo</td></tr>
           <tr><td><b>Console</b></td><td>Ktor or FastAPI · React + Vite · MapLibre offline tiles · Mesh Twin on the SAGE simulator</td></tr>
-          <tr><td><b>Quality</b></td><td>JUnit · 25 router tests · 100+ research tests · 3-phone ADB benchmark harness · CSV evidence</td></tr>
+          <tr><td><b>Quality</b></td><td>JUnit · 84 core tests (router, security, scheduler, Ask) · 100+ research tests · ADB benchmark harness · CSV evidence</td></tr>
         </tbody>
       </table>
       <div class="card" style="margin-top:4mm;background:var(--ink);color:var(--snow)"><div class="kicker" style="color:var(--lime)">Envelope</div><div style="font:400 9.5px/1.6 var(--mono);color:#e6e3da">event_id · msg_id · dest · created · expires<br>priority · hop_budget · replicas · sig<br>payload (E2E-encrypted when needed)</div></div>
     </div>
   </div>
-  <div class="foot"><span>A 20,000-person deployment is not 20,000 simultaneous radio links. Each phone keeps a handful of links; application-layer routing spans the venue — which is exactly why choosing those links and copies well matters.</span><b>22</b></div>
+  <div class="foot"><span>A 20,000-person deployment is not 20,000 simultaneous radio links. Each phone keeps a handful of links; application-layer routing spans the venue — which is exactly why choosing those links and copies well matters.</span><b>25</b></div>
 </section>
 
 <!-- ============================== 20 DATA FLYWHEEL ============================== -->
@@ -823,14 +931,14 @@ on enqueue(p):
   <div class="grid g4" style="margin-bottom:6mm">
     <div class="card"><div class="kicker">Programme 1</div><h3>Failure laboratory</h3><p>Replay real routing code against churn, gateway loss, uneven adoption, killed processes, bursty traffic. Model radio contention — perfect-link simulators lie.</p></div>
     <div class="card"><div class="kicker">Programme 2</div><h3>SAGE vs strong baselines</h3><p>Epidemic, Spray-and-Wait, Spray-and-Focus, PRoPHET and a same-mechanics PRoPHET-value policy. Tuned on validation, reported on held-out events.</p></div>
-    <div class="card"><div class="kicker">Programme 3</div><h3>Hard language set</h3><p>Noise, code-switching, vague locations, negation. Native speakers verify; speakers never shared across train and test.</p></div>
+    <div class="card"><div class="kicker">Programme 3</div><h3>Learn the need model</h3><p>Replace the gateway's rule-based need scorer with a small on-device model trained on labelled crowd questions; the rules stay as its baseline.</p></div>
     <div class="card"><div class="kicker">Programme 4</div><h3>Distil everything</h3><p>Expensive simulations become tiny models: which relay stays useful, which question matters, which reports are one incident — and when to abstain.</p></div>
   </div>
   <div class="grid g2">
     <div class="card or"><div class="kicker" style="color:var(--ink)">v2 target → v1 result (held-out simulation)</div><p style="font-size:11px">Target: −25% bytes at equal delivery, emergency delivery and p95 unchanged. <b>Result: −28% total airtime at statistically equal delivery; SOS delivery and latency identical in all 484 runs. Not yet met: duplicate bytes fell only 12%.</b> Next target: 3–4× less airtime at equal delivery (perfect-foresight bound: −72%), then the same on phones.</p></div>
     <div class="card"><div class="kicker">What we collect · and never collect</div><p>Consented, pseudonymous field telemetry: peer counts, contact durations, queue length, battery, packet size/type/TTL, relay choice, outcome, latency, hops. <b style="color:#fff">Never</b> message text, media, phone numbers or persistent precise location.</p></div>
   </div>
-  <div class="foot"><span>Public training data used today: SocioPatterns (conference, exhibition, school, workplace, hospital) and the Copenhagen Networks Study. CRAWDAD traces require licence steps and are not used until obtained properly.</span><b>23</b></div>
+  <div class="foot"><span>Public training data used today: SocioPatterns (conference, exhibition, school, workplace, hospital) and the Copenhagen Networks Study. CRAWDAD traces require licence steps and are not used until obtained properly.</span><b>26</b></div>
 </section>
 
 <!-- ============================== 21 COMPETITION ============================== -->
@@ -846,7 +954,8 @@ on enqueue(p):
       <tr><td><b>Network split</b></td><td>Last write wins</td><td>Two medics dispatched; one silently erased</td><td><b>Mergeable incidents</b>; conflicts shown to a human</td></tr>
       <tr><td><b>Blind spots</b></td><td>No reports looks like all clear</td><td>Silent zones are the dangerous ones</td><td><b>Observability map + Mesh Twin forecast</b></td></tr>
       <tr><td><b>Under load</b></td><td>FIFO, trust the transport's "sent"</td><td>SOS stuck behind megabytes (2,374 ms)</td><td><b>Receiver-confirmed backpressure: 145 ms</b></td></tr>
-      <tr><td><b>SOS input</b></td><td>Typed text</td><td>A crushed or panicking person cannot type</td><td><b>Silent SOS + Bhasha SOS</b></td></tr>
+      <tr><td><b>SOS input</b></td><td>Typed text</td><td>A crushed or panicking person cannot type</td><td><b>One-tap category SOS + Silent SOS</b></td></tr>
+      <tr><td><b>Trust</b></td><td>Anonymous, or unsigned</td><td>Fake alerts, untraceable abuse, app-store bans</td><td><b>Every packet signed; verified roles broadcast</b></td></tr>
       <tr><td><b>Sensing</b></td><td>Fixed cameras</td><td>Blind spots; faces; privacy</td><td><b>Crowd Pulse</b>: consented on-device evidence</td></tr>
       <tr><td><b>Evidence</b></td><td>Feature lists and demos</td><td>Organisers can't compare reliability</td><td><b>Published benchmarks with ceilings and baselines</b></td></tr>
     </tbody>
@@ -855,7 +964,7 @@ on enqueue(p):
     <div class="card ink"><div class="kicker" style="color:var(--lime)">Our honest uniqueness claim</div><div style="font:500 15px/1.4 var(--sans)">We cannot promise no one has built any single piece. We will show that MeshMind gets an incident from "someone needs help" to "a responder has accepted it, and the reporter knows" — when connectivity is failing — better, under measured conditions.</div></div>
     <div>
       <table style="font-size:9.4px"><thead><tr><th>Player</th><th>What's missing for event response</th></tr></thead><tbody>
-        <tr><td><b>bitchat</b></td><td>Privacy messenger; no incident workflow, roles or observability</td></tr>
+        <tr><td><b>bitchat</b></td><td>Anonymous messenger; removed from Indian app stores Oct 2026; no roles or incident workflow</td></tr>
         <tr><td><b>Bridgefy</b></td><td>Messaging and broadcast; no responsibility tracking</td></tr>
         <tr><td><b>Meshtastic · goTenna</b></td><td>Extra hardware; not event operations</td></tr>
         <tr><td><b>APPIX · PixMob</b></td><td>One-way alerts and lighting; no two-way loop</td></tr>
@@ -864,7 +973,7 @@ on enqueue(p):
       </tbody></table>
     </div>
   </div>
-  <div class="foot"><span>"How others typically work" describes common primary designs, not a claim that no product has any adjacent capability. Descriptions reflect each player's primary published purpose.</span><b>24</b></div>
+  <div class="foot"><span>"How others typically work" describes common primary designs, not a claim that no product has any adjacent capability. Descriptions reflect each player's primary published purpose.</span><b>27</b></div>
 </section>
 
 <!-- ============================== 22 BUSINESS + ROADMAP ============================== -->
@@ -875,7 +984,7 @@ on enqueue(p):
   <div style="position:relative;margin:4mm 0 7mm">
     <div style="position:absolute;left:0;right:0;top:4mm;height:2px;background:#2a2e35"></div>
     <div class="grid" style="grid-template-columns:repeat(6,1fr);gap:2.5mm;position:relative">
-      <div><div style="width:8mm;height:8mm;border-radius:50%;background:var(--lime);margin-bottom:3mm"></div><div class="kicker">Now</div><p class="small" style="color:#bdbab2">3-phone multi-hop; SAGE v1 proven in sim; benchmark harness</p></div>
+      <div><div style="width:8mm;height:8mm;border-radius:50%;background:var(--lime);margin-bottom:3mm"></div><div class="kicker">Now</div><p class="small" style="color:#bdbab2">Signed mesh, Ask and need-aware gateway on phones (no server); 3-phone multi-hop; SAGE v1 in sim</p></div>
       <div><div style="width:8mm;height:8mm;border-radius:50%;background:var(--orange);margin-bottom:3mm"></div><div class="kicker">Day 30</div><p class="small" style="color:#bdbab2">Incident loop, Ask the Right Person, Reconnect a Zone, SAGE in shadow mode</p></div>
       <div><div style="width:8mm;height:8mm;border-radius:50%;border:2px solid var(--amber);margin-bottom:3mm"></div><div class="kicker" style="color:var(--amber)">Day 90</div><p class="small" style="color:#bdbab2">First 15–30-staff drill at a college fest; SAGE v2 targeting 3–4× less airtime; benchmark report v1 public</p></div>
       <div><div style="width:8mm;height:8mm;border-radius:50%;border:2px solid var(--amber);margin-bottom:3mm"></div><div class="kicker" style="color:var(--amber)">Month 6</div><p class="small" style="color:#bdbab2">First paid event; Silent SOS; Mesh Twin beta; SAGE ships or is dropped on evidence; iOS interop</p></div>
@@ -908,7 +1017,7 @@ on enqueue(p):
     <div class="card"><div class="kicker">Models</div><p>SAGE trained on every event we run — federated, never raw</p></div>
   </div>
   <div class="card li" style="margin-top:6mm;padding:6mm"><div class="kicker" style="color:var(--ink)">The 24-month moonshot · a target, not a claim</div><div style="font:600 18px/1.35 var(--sans)">A mela where no separated family waits more than an hour, no zone goes dark without someone seeing it coming, and every SOS reaches a responder who accepts it — carried by phones the pilgrims already own.</div></div>
-  <div class="foot"><span>Roadmap dates are proposed targets, not claims. Mela and government milestones depend on invitations, permits and safety review.</span><b>25</b></div>
+  <div class="foot"><span>Roadmap dates are proposed targets, not claims. Mela and government milestones depend on invitations, permits and safety review.</span><b>28</b></div>
 </section>
 
 <!-- ============================== 23 DEMO ============================== -->
@@ -920,7 +1029,7 @@ on enqueue(p):
     <tbody>
       <tr><td style="width:17%;border-top:0;font:700 10px var(--mono);color:var(--lime)">0:00–0:30</td><td style="border-top:0"><b>Set the stage.</b> A venue map, several real phones, Internet off on attendee devices. Conditions visible on screen.</td><td style="width:18%;border-top:0"><span class="chip c-live">Live</span></td></tr>
       <tr><td style="font:700 10px var(--mono);color:var(--lime)">0:30–1:10</td><td><b>Silent SOS under load.</b> A phone in a pocket: five presses. The SOS cuts through a 1 MB transfer across two hops while the bulk transfer keeps running.</td><td><span class="chip c-live">Live</span></td></tr>
-      <tr><td style="font:700 10px var(--mono);color:var(--lime)">1:10–1:50</td><td><b>Bhasha + Ask the Right Person.</b> A spoken Kannada report links to the SOS; a steward gets the one missing question and taps "Blocked".</td><td><span class="chip c-live">Live</span></td></tr>
+      <tr><td style="font:700 10px var(--mono);color:var(--lime)">1:10–1:50</td><td><b>Ask through the mesh.</b> The airplane-mode phone asks "nearest first-aid post": a signed answer in about 2 s through a gateway phone. Ask again — instant, from the phone itself.</td><td><span class="chip c-live">Live</span></td></tr>
       <tr><td style="font:700 10px var(--mono);color:var(--lime)">1:50–2:30</td><td><b>The twin sees it coming.</b> Mesh Twin flags North Stand: its last relay's battery is falling and its gateway is flickering.</td><td><span class="chip c-sim">Simulation-backed</span></td></tr>
       <tr><td style="font:700 10px var(--mono);color:var(--lime)">2:30–3:20</td><td><b>Pre-connect a Zone.</b> The organiser approves a checkpoint; a steward walks there. When the relay is pulled, the zone never goes dark.</td><td><span class="chip c-build">Wow moment</span></td></tr>
       <tr><td style="font:700 10px var(--mono);color:var(--lime)">3:20–4:00</td><td><b>Close the loop.</b> A medic accepts; the reporter sees "help is on the way"; a judge's own 4G phone receives the update through a gateway.</td><td><span class="chip c-live">Live</span></td></tr>
@@ -936,41 +1045,41 @@ on enqueue(p):
     <div class="card"><div class="kicker">Shown with its ceiling</div><p>SAGE replay results always appear next to flooding and the perfect-knowledge ceiling.</p></div>
     <div class="card"><div class="kicker">Labelled, always</div><p>Every simulated or fault-injected element carries a visible label on screen.</p></div>
   </div>
-  <div class="foot"><span>Software-disabled links are labelled as fault injection. "True radio multi-hop" is reserved for a test with established physical RF topology.</span><b>26</b></div>
+  <div class="foot"><span>Software-disabled links are labelled as fault injection. "True radio multi-hop" is reserved for a test with established physical RF topology.</span><b>29</b></div>
 </section>
 
 <!-- ============================== 24 CLAIMS + ASK ============================== -->
 <section class="page cream" id="p24">
   <div class="top"><span>MeshMind</span><span>Appendix</span></div>
   <div class="tag"><span class="n">A</span> Claims discipline</div>
-  <h2 style="font-size:30px;margin-bottom:5mm">What we can say today — <em>and what we can't yet.</em></h2>
-  <table style="margin-bottom:6mm">
+  <h2 style="font-size:30px;margin-bottom:4mm">What we can say today — <em>and what we can't yet.</em></h2>
+  <table class="tight" style="margin-bottom:4mm">
     <thead><tr><th style="width:27%">Claim</th><th>What we can say now</th><th style="width:20%">Status</th></tr></thead>
     <tbody>
       <tr><td>Offline peer communication</td><td>Validated on three physical Android phones from three makers</td><td><span class="chip c-live">Validated</span></td></tr>
       <tr><td>Store-and-forward · SOS pre-emption</td><td>Validated; 145 ms during a 1 MB transfer via chunking + backpressure</td><td><span class="chip c-live">Validated</span></td></tr>
-      <tr><td>Application multi-hop A→B→C</td><td>2-hour session: 251/258 two-hop deliveries, 0 duplicates; SOS 88/88 ahead of bulk; offline web 30/30; software-enforced topology</td><td><span class="chip c-live">Validated · SW topology</span></td></tr>
-      <tr><td>Physical RF-isolated multi-hop</td><td>Needs a test with established physical topology</td><td><span class="chip c-no">Not yet</span></td></tr>
-      <tr><td>Fast cold discovery</td><td>Measured weakness: 5/8, p50 70 s to form a 3-phone chain; warm-restart OOM found</td><td><span class="chip c-no">Fixing</span></td></tr>
+      <tr><td>Application multi-hop A→B→C</td><td>2-hour session: 251/258 two-hop deliveries, 0 duplicates; SOS 88/88 ahead of bulk; offline web 30/30; software-enforced topology — an RF-isolated test is still to come</td><td><span class="chip c-live">Validated · SW topology</span></td></tr>
+      <tr><td>Fast discovery</td><td>Gateway learned two hops away in 7–31 s (was ~70 s); a phone joining a gateway: 8–15 s</td><td><span class="chip c-live">Improved</span></td></tr>
+      <tr><td>Ask through the mesh, no server</td><td>Airplane-mode phone got signed answers via a gateway phone calling Gemini: 1.1–2.0 s; repeat 0 ms; page read 6 KB in 0.9–1.4 s</td><td><span class="chip c-live">Validated · 2 phones</span></td></tr>
+      <tr><td>Need-aware fair share · signed identity</td><td>Queue served Health → Safety → Transport → Leisure; signed SOS 156 ms p50; fake notice refused; 8 attack tests</td><td><span class="chip c-live">Validated · 2 phones</span></td></tr>
       <tr><td>SAGE identifies useful copies</td><td>AUC 0.81 vs 0.53–0.58 for hand-written rules on held-out events (simulation on real traces)</td><td><span class="chip c-sim">Proven in sim</span></td></tr>
       <tr><td>SAGE routing advantage</td><td>Held-out sim: +0.54 pts delivery vs flooding at equal airtime (all 17 scenarios), or equal delivery with −28% airtime; ties Spray-and-Focus at low budgets; untested on phones</td><td><span class="chip c-sim">Sim · not on phones</span></td></tr>
       <tr><td>SAGE efficiency headroom</td><td>Perfect foresight matches flooding with 28% of the bytes; SAGE eco reaches 72% today — the v2 research target</td><td><span class="chip c-research">Research target</span></td></tr>
       <tr><td>Living Incident · questions · pre-connect</td><td>Designed; 30-day build plan with exit criteria</td><td><span class="chip c-build">Building</span></td></tr>
-      <tr><td>Mesh Twin · Silent SOS · Swarm Relays</td><td>Designed; components exist in the lab or as Android sensor APIs</td><td><span class="chip c-next">Next / research</span></td></tr>
-      <tr><td>SurgeWatch / crowd sensing</td><td>Research hypothesis; no warning lead time claimed</td><td><span class="chip c-research">Research</span></td></tr>
+      <tr><td>Mesh Twin · Silent SOS · Swarm Relays · SurgeWatch</td><td>Designed; components exist in the lab or as Android sensor APIs; no warning lead time claimed</td><td><span class="chip c-next">Next / research</span></td></tr>
       <tr><td>Last-Seen Trail · Sky Relay · satellite gateways</td><td>Vision; privacy, permit and hardware work required</td><td><span class="chip c-vision">Vision</span></td></tr>
       <tr><td>Offline Light Show</td><td>Implemented conductor: paired USB browser, eight scenes, groups/positions, twelve cues, blackout/restore; Android USB, display skew and scale unmeasured</td><td><span class="chip c-build">Implemented · JVM tested</span></td></tr>
       <tr><td>Large-crowd scale · emergency use</td><td>Needs staged field evidence · not a certified emergency system</td><td><span class="chip c-no">Not yet · not certified</span></td></tr>
     </tbody>
   </table>
-  <div class="card ink" style="margin-top:auto;padding:7mm">
+  <div class="card ink" style="margin-top:auto;padding:5mm 7mm">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:8mm">
       <div><div style="font:700 15px var(--mono);letter-spacing:.35em;color:var(--lime);margin-bottom:4mm">MESHMIND</div>
       <div style="font:600 24px/1.15 var(--sans)">When the network fails,<br><span class="serif" style="color:var(--lime);font-size:28px">the crowd thinks for itself.</span></div></div>
       <div style="text-align:right;font:500 10px/1.7 var(--mono);color:#c9c6be"><div style="opacity:.6;letter-spacing:.15em">THE ASK</div>A pilot event · 15–30 staff phones<br>a response team willing to drill with us<br>a venue with a known dead zone</div>
     </div>
   </div>
-  <div class="foot"><span>Concept brochure v5, October 2026 - the conductor edition. Light Show is implemented; display timing awaits phone measurements. Phone figures from the October 2026 two- and three-phone sessions; SAGE figures from research/sage v1 held-out evaluation. Vision items are labelled and are not claims.</span><b>27</b></div>
+  <div class="foot"><span>Concept brochure v5, October 2026 — conductor + Ask edition. Ask, the need-aware gateway and signed identity measured on two phones on 10 Oct 2026; Light Show display timing awaits phone measurements. Phone figures from the October 2026 two- and three-phone sessions; SAGE figures from research/sage v1 held-out evaluation. Vision items are labelled and are not claims.</span><b>30</b></div>
 </section>
 
 <script>
