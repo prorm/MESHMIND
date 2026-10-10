@@ -25,7 +25,7 @@ In the app, put `http://<laptop-ip>:8787` in **Share my Internet** (gateway phon
 The phone test plan is in [docs/sprint2-testing.md](docs/sprint2-testing.md).
 
 **Sprint 2: Ask, fair share, trust.**
-- **Ask through the mesh.** Phones with no Internet ask questions and read pages through a gateway phone. Answers come from the backend (Gemini 2.5 Flash-Lite with Google Search grounding by default) and are signed by the MeshMind authority. Every phone caches verified answers, so the same question is not fetched from the Internet twice.
+- **Ask through the mesh.** Phones with no Internet ask questions and read pages through a gateway phone. Answers come from the backend (Gemini 3.5 Flash-Lite by default; Google Search grounding when billing is enabled) and are signed by the MeshMind authority. Every phone caches verified answers, so the same question is not fetched from the Internet twice.
 - **Need-aware fair-share queue.** One gateway serves a crowd: SOS first, then emergency, health and safety questions. Waiting raises priority, phones that were just served drop back, and "urgent" claims are capped per phone. Every decision shows its reasons.
 - **Signed packets and verified identity.** Every packet and HELLO is signed (ECDSA P-256), so messages cannot be altered or sent in someone else's name. Phones verify their number once to get a ✓; organizer and responder roles can broadcast notices. Phone numbers stay on the backend.
 - **Live info board.** Weather, organizer notices and official alerts, signed and broadcast to every phone.

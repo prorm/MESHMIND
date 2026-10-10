@@ -379,6 +379,11 @@ class Router(
      * authority-issued with the ORGANIZER or RESPONDER role, so ordinary phones cannot broadcast alerts.
      */
     suspend fun postNotice(title: String, body: String, severity: Int, kind: BulletinKind = BulletinKind.NOTICE): Boolean {
+        // Refuse locally too: otherwise the poster would see its own notice as if everyone had received it.
+        if (identity.cert.selfSigned || identity.cert.role !in setOf(Role.ORGANIZER, Role.RESPONDER)) {
+            logger.log(LogCategory.SECURITY, "notice not posted: only verified organizers and responders can broadcast notices")
+            return false
+        }
         val now = clock()
         val prev = mutex.withLock { bulletins[selfId]?.bulletin }
         val items = (listOf(BulletinItem(kind, severity.coerceIn(0, 3), title.take(120), body.take(500), selfId, now, now + config.bulletinLifetimeMs)) +

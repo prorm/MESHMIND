@@ -356,7 +356,7 @@ def main() -> None:
     p.add_argument("--data", default=str(Path(__file__).resolve().parent.parent / "data"))
     p.add_argument("--provider", choices=["auto", "gemini", "claude", "demo"], default=os.environ.get("MESHMIND_PROVIDER", "auto"),
                    help="auto = Gemini if GEMINI_API_KEY is set, else Claude if ANTHROPIC_API_KEY is set, else canned demo answers")
-    p.add_argument("--gemini-model", default=os.environ.get("MESHMIND_GEMINI_MODEL", "gemini-2.5-flash-lite"))
+    p.add_argument("--gemini-model", default=os.environ.get("MESHMIND_GEMINI_MODEL", "gemini-3.5-flash-lite"))
     p.add_argument("--model", default=os.environ.get("MESHMIND_MODEL", "claude-opus-5-5"))
     p.add_argument("--effort", default=os.environ.get("MESHMIND_EFFORT", "low"), choices=["low", "medium", "high", "xhigh", "max"])
     p.add_argument("--context", default=os.environ.get("MESHMIND_CONTEXT", "They are at a large event in Bengaluru, India."))

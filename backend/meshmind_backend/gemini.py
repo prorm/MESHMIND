@@ -1,9 +1,11 @@
-"""Gemini answer provider: Gemini 2.5 Flash-Lite with Grounding with Google Search, over plain REST (no SDK).
+"""Gemini answer provider over plain REST (no SDK), with Grounding with Google Search when the key allows it.
 
-Why this model: it is the cheapest Gemini model ($0.10 / $0.40 per 1M tokens), it has a free tier, and it is the
-Flash-Lite model whose free tier includes Google Search grounding (Google's pricing page, Oct 2026: up to 500
-grounded requests/day free). If grounding is refused (quota, region), the question is retried ungrounded so the
-crowd still gets an answer, marked as such.
+Default model: gemini-3.5-flash-lite (free tier; $0.30 / $2.50 per 1M tokens when paid). Measured on 2026-10-10 with
+a new free-tier key: ~1.4 s per call, versus ~20 s for gemini-3.1-flash-lite ($0.25 / $1.50); gemini-2.5-flash-lite
+is cheaper still but Google no longer serves it to new keys. In a crisis, speed wins.
+On the free tier Google Search grounding is refused (429); the provider then answers ungrounded, marks the answer
+"(no web search)", and stops trying grounding for a while so every question isn't slowed by a failed attempt.
+Enabling billing on the Google project turns grounding on (Gemini 3+: 5,000 grounded queries/month free).
 """
 
 from __future__ import annotations
@@ -11,6 +13,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 import urllib.error
 import urllib.request
 
@@ -20,6 +23,13 @@ log = logging.getLogger("meshmind.gemini")
 
 API = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
+# Without search the model has no live data; an invented "running normally today" is worse than no answer.
+NO_SEARCH_RULE = (
+    "You have NO web access and do not know today's date or any live status. Never say something is open, running, "
+    "closed or happening today, and never state a date as current. Give general, stable facts only (locations, "
+    "usual timings, what to do), and say plainly that you could not check live status."
+)
+
 
 class GeminiProvider(AnswerProvider):
     def __init__(self, api_key: str, model: str, context: str) -> None:
@@ -27,6 +37,7 @@ class GeminiProvider(AnswerProvider):
         self.model = model
         self.system = SYSTEM_PROMPT.format(context=context.strip())
         self.name = model
+        self._grounding_off_until = 0.0
 
     def _call(self, query: str, grounded: bool) -> dict:
         body = {
@@ -34,6 +45,8 @@ class GeminiProvider(AnswerProvider):
             "contents": [{"role": "user", "parts": [{"text": query}]}],
             "generationConfig": {"maxOutputTokens": 400, "temperature": 0.3},
         }
+        if not grounded:
+            body["systemInstruction"]["parts"].append({"text": NO_SEARCH_RULE})
         if grounded:
             body["tools"] = [{"google_search": {}}]
         req = urllib.request.Request(
@@ -44,14 +57,17 @@ class GeminiProvider(AnswerProvider):
             return json.load(r)
 
     def answer(self, query: str) -> ProviderAnswer:
-        grounded = True
+        grounded = time.time() >= self._grounding_off_until
         try:
-            data = self._call(query, grounded=True)
+            data = self._call(query, grounded=grounded)
         except urllib.error.HTTPError as e:
             detail = e.read().decode(errors="replace")[:300]
             if e.code in (401, 403) and "API key" in detail:
                 raise RuntimeError(f"Gemini rejected the API key: {detail}")
-            log.warning("grounded call failed (%s %s); retrying without search", e.code, detail)
+            if not grounded:
+                raise RuntimeError(f"Gemini error {e.code}: {detail}")
+            log.warning("grounded call failed (%s); answering without search for the next 15 min", e.code)
+            self._grounding_off_until = time.time() + 15 * 60
             grounded = False
             data = self._call(query, grounded=False)
 

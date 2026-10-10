@@ -129,6 +129,7 @@ class AskTest {
     @Test
     fun normalisationAndGatewayChoice() {
         assertEquals(AnswerCache.normalize("Is the metro running?"), AnswerCache.normalize("metro RUNNING now!!"))
+        assertEquals(AnswerCache.normalize("Where is the nearest hospital?"), AnswerCache.normalize("nearest hospital"))
         assertTrue(AnswerCache.normalize("nearest hospital") != AnswerCache.normalize("nearest police"))
         val t = GatewayTable()
         t.update("BUSY", 1, "BUSY", 0, verified = true, load = 1.0)

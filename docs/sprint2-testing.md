@@ -18,6 +18,36 @@ What is **not** verified yet:
 - Signing cost on real phones has not been measured.
 - Real Claude answers have not been tried, because each one costs money and I did not run any without your go-ahead.
 
+## Phone results, 2026-10-10 (2 phones)
+
+**Setup:**
+- **A** = OnePlus 12R (CPH2585), the offline requester. Airplane mode, Wi-Fi off, Bluetooth on; a ping fails. Verified USER.
+- **B** = Realme RMX5108, the gateway on Wi-Fi. Verified ORGANIZER.
+- **Backend** on a laptop on the same LAN: `gemini-3.5-flash-lite`, free-tier key. Google Search grounding is refused on the free tier, so answers are marked "no web search".
+
+| Test | Result |
+|---|---|
+| A finds gateway B after going offline | 8–12 s (shown as a verified gateway) |
+| Ask (Health question) A → B → Gemini → A | ✓ signed answer, Health 85/100, **1.4–2.0 s** round trip; 141 ms when the backend already had it cached |
+| Same question again, reworded | `this-phone-cache`, 0 ms, no radio traffic |
+| Read (Wikipedia page) | ✓ signed, 6 KB of text, 0.9 s |
+| Live info board | On A within 0.9–1.1 s of B's broadcast, marked ✓ Official |
+| Organizer notice from B | On A in 0.9 s, marked ✓ organizer |
+| Notice from A (plain user) | Refused on A itself and never shown on B (after the fix below) |
+| Fair share (budget 2/min, 6 mixed questions) | Once the budget ran out, the queue came back Health 85 → Safety 80 → Transport 60 → Leisure 20; the 2 questions that arrived before the queue formed went straight through |
+| Per-phone abuse cap | A's 7th+ request within a minute was rejected with "rate limit: max 6/min per requester" |
+| SOS ACK RTT with signed packets (5 runs) | p50 **156–158 ms** (Sprint 1 unsigned: 172–208 ms), all received as VERIFIED |
+| Trust rejections during normal use | 0 |
+
+**Fixed during the run:**
+- A user's refused notice showed on their own screen with a "✓ user" badge. Notices are now refused on the posting phone too.
+- "Where is the nearest hospital" and "nearest hospital" now share a cache entry ("where" added to the stop words on phone and backend).
+- `gemini-2.5-flash-lite` and `gemini-2.5-flash` are closed to new keys. `gemini-3.1-flash-lite` took about 20 s per answer, so the default is `gemini-3.5-flash-lite` (about 1.4 s).
+- Without web search, the model claimed "running normally today, Oct 2024". A no-live-data rule now makes it say it cannot check live status.
+
+**Seen, not caused by this sprint:**
+- A showed "Last radio error: MISSING_PERMISSION_ACCESS_COARSE_LOCATION (8034)" on discovery. The link still formed because B discovered A. Check that Location is on and the location permission is granted on the OnePlus.
+
 ## What you need
 
 - **Phones.**

@@ -195,8 +195,9 @@ class SecurityTest {
             sim.chain("ORG", "A", "B")
             advanceUntilIdle()
 
-            // A verified ordinary user tries to post: refused locally by receivers (role USER).
-            sim["A"].postNotice("Fire at Gate A!", "Run", 3)
+            // A verified ordinary user tries to post: refused on its own phone (and receivers would refuse it too).
+            assertFalse(sim["A"].postNotice("Fire at Gate A!", "Run", 3))
+            assertTrue(sim["A"].state.value.bulletins.isEmpty(), "the poster must not see a notice nobody else will")
             // An unenrolled stranger signs a board claiming to be official with its own key.
             val x = attacker(sim)
             sim.link("X", "A")

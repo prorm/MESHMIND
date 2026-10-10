@@ -250,17 +250,18 @@ class MeshRuntime(private val context: Context) {
     /** Verifies the code, stores the certificate and restarts the mesh (if running) so it signs as the new identity. */
     fun verifyCode(phone: String, code: String, role: Role, organizerCode: String) = launch {
         _enroll.value = _enroll.value.copy(busy = true, message = null, error = false)
-        val result = runCatching {
-            backend.enrollVerify(phone.trim(), code.trim(), _nodeId.value, identityStore.signer.publicKey, role, organizerCode.trim())
-        }
-        result.onSuccess { e ->
-            identityStore.saveEnrollment(e.certificate, e.authorityKey)
-            _identityVersion.value++
-            _enroll.value = EnrollState(message = "Verified ✓ (${e.certificate.role.name.lowercase()})")
-            if (_router.value != null) { stopMesh(); startMesh() }
-        }.onFailure {
-            _enroll.value = _enroll.value.copy(busy = false, message = it.message ?: "verification failed", error = true)
-        }
+        runCatching { enrollNow(phone, code, role, organizerCode) }
+            .onSuccess { r -> _enroll.value = EnrollState(message = "Verified ✓ (${r.name.lowercase()})") }
+            .onFailure { _enroll.value = _enroll.value.copy(busy = false, message = it.message ?: "verification failed", error = true) }
+    }
+
+    /** The verification itself; returns the role granted. Also used by the debug benchmark receiver. */
+    suspend fun enrollNow(phone: String, code: String, role: Role, organizerCode: String): Role {
+        val e = backend.enrollVerify(phone.trim(), code.trim(), _nodeId.value, identityStore.signer.publicKey, role, organizerCode.trim())
+        identityStore.saveEnrollment(e.certificate, e.authorityKey)
+        _identityVersion.value++
+        if (_router.value != null) { stopMesh(); startMesh() }
+        return e.certificate.role
     }
 
     fun forgetVerification() = launch {

@@ -28,7 +28,7 @@ copy .env.example .env      # put your GEMINI_API_KEY in it (git-ignored)
 
 | Provider | When | Model | Notes |
 |---|---|---|---|
-| `gemini` (default when `GEMINI_API_KEY` is set) | Hackathons and the free tier | `gemini-2.5-flash-lite` | The cheapest Gemini model ($0.10 / $0.40 per 1M tokens). Its free tier includes Google Search grounding (Google lists up to 500 grounded requests/day free). If grounding is refused, the answer is retried without search and marked "(no web search)". |
+| `gemini` (default when `GEMINI_API_KEY` is set) | Hackathons and the free tier | `gemini-3.5-flash-lite` | Free tier; $0.30 / $2.50 per 1M tokens when paid. About 1.4 s per answer, measured. `gemini-3.1-flash-lite` is a little cheaper but took about 20 s per answer; `gemini-2.5-flash-lite` is refused for new keys. Google Search grounding needs billing enabled on the Google project; on the free tier answers come without web search and are marked "(no web search)". |
 | `claude` | `ANTHROPIC_API_KEY` set | `claude-opus-5-5` (`MESHMIND_MODEL`) | Uses Anthropic's web search, with server-side refusal fallback. |
 | `demo` | No key | none | Canned answers labelled "demo", for rehearsals. |
 

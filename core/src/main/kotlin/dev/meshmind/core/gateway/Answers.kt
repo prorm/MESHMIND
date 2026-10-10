@@ -42,7 +42,7 @@ class AnswerCache(private val capacity: Int = 200) {
         private val stop = setOf(
             "a", "an", "the", "is", "are", "was", "were", "be", "to", "of", "in", "on", "at", "for", "and", "or",
             "do", "does", "did", "i", "me", "my", "we", "you", "it", "this", "that", "there", "what", "whats",
-            "please", "tell", "can", "could", "would", "will", "now", "today", "right", "currently", "any",
+            "please", "tell", "can", "could", "would", "will", "now", "today", "right", "currently", "any", "where",
         )
 
         /** "Is the metro running?" and "metro running now" share a key: lowercase, no stop words, sorted. */

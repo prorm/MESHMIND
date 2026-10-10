@@ -41,6 +41,19 @@ class BenchmarkReceiver : BroadcastReceiver() {
                     "read" -> out.put("requestId", requireNotNull(r).sendRead(intent.getStringExtra("url") ?: "https://example.com/"))
                     "notice" -> out.put("posted", requireNotNull(r).postNotice(text, intent.getStringExtra("body") ?: "", intent.getIntExtra("severity", 1)))
                     "bulletin_refresh" -> out.put("broadcast", runtime.refreshBulletin())
+                    "config" -> {
+                        intent.getStringExtra("backendUrl")?.let { runtime.setBackendUrl(it) }
+                        if (intent.hasExtra("consent")) runtime.updateGateway { it.copy(consent = intent.getBooleanExtra("consent", false)) }
+                        if (intent.hasExtra("force")) runtime.updateGateway { it.copy(forceGateway = intent.getBooleanExtra("force", false)) }
+                        if (intent.hasExtra("perMinute")) runtime.updateGateway { it.copy(perMinute = intent.getIntExtra("perMinute", 30)) }
+                        out.put("backendUrl", runtime.backendUrl.value)
+                    }
+                    "enroll" -> {
+                        val phone = intent.getStringExtra("phone") ?: error("phone extra required")
+                        val code = runtime.backend.enrollStart(phone) ?: error("backend is not in demo OTP mode")
+                        val role = dev.meshmind.core.security.Role.valueOf(intent.getStringExtra("role") ?: "USER")
+                        out.put("role", runtime.enrollNow(phone, code, role, intent.getStringExtra("organizerCode") ?: "").name)
+                    }
                     "bulk_sos" -> {
                         val bytes = ByteArray(intent.getIntExtra("bytes", 262144)) { (it % 251).toByte() }
                         out.put("sha256", MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) })
